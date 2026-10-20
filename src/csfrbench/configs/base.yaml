@@ -1,0 +1,240 @@
+training:
+  optimizer:                # declared training-contract constants (freeze-setup 2026-08)
+    type: adam              # only 'adam' implemented
+    betas: [0.9, 0.999]
+    eps: 1.0e-8
+    weight_decay: 0.0       # pinned: weight-space regularization is the object of study
+  grad_clip: null           # off; the gradient norm is measured either way
+  batch_size: 32
+  max_steps: 150000
+
+  scheduler:
+    type: cosine            # only 'cosine' implemented
+    lr_final_frac: 0.01
+
+  validation:
+    eval_every: 500
+    metric: nmse            # only 'nmse' implemented
+    restore_best_checkpoint: true
+
+  early_stopping:
+    enabled: false          # when true also set min_frac_elapsed / max_lr_frac / patience_evals / min_rel_improvement
+
+data:                       # one artifact per (target, dataset_seed); `n_values` slices it
+  n_values: [128, 256, 512, 1024, 2048, 4096, 8192]
+  n_max: 8192               # master training pool, independent of n_values
+
+  # train + val are finite-data replicates (follow dataset_seed); the rest are fixed per target.
+  val_size: 8192            # automated checkpoint + hp selection
+  development_test_size: 65536   # method development and debugging
+  test_size: 65536          # frozen: read only once the method and search protocol are frozen
+  test_audit_size: 65536    # independent second pool; fixed-realization sensitivity check
+  diagnostic_size: 8192     # frozen probe pool (protocol part 1, pilot P3): 4096/2048/2048 splits
+
+  target_variance: 1.0      # Var[f*]; SNR = target_variance / sigma_sq
+  sigma_sq: 0.01            # SNR=100 primary operating point; noise-robustness
+                            # sweep {0, 0.1, 0.5} on the primary tree (spec §10).
+  verify_hashes: true       # check tensor SHA-256 at load
+
+model_act: relu             # ReLU-pinned by the benchmark
+model_sizes:                # a campaign picks one by name
+  # v1 finalization architecture grid (candidate profiles, Stage C/D) + the
+  # conditional saturation sentinels; systematic names = profile ids.
+  mlp32x4:  {width: 32,  hidden: 4}
+  mlp32x6:  {width: 32,  hidden: 6}
+  mlp32x8:  {width: 32,  hidden: 8}
+  mlp64x4:  {width: 64,  hidden: 4}
+  mlp64x5:  {width: 64,  hidden: 5}   # amendment-7 depth-4 working profile
+  mlp64x6:  {width: 64,  hidden: 6}
+  mlp64x8:  {width: 64,  hidden: 8}
+  mlp128x4: {width: 128, hidden: 4}
+  mlp128x6: {width: 128, hidden: 6}
+  mlp128x8: {width: 128, hidden: 8}
+  mlp256x10: {width: 256, hidden: 10}
+  mlp256x12: {width: 256, hidden: 12}
+  # v0.5 amendment-5 record: the constructed 8-input Fourier dense size
+  # (capacity-sufficient, realization-checked); NOT adopted - the dense
+  # control runs the common backbone (design decision 2026-08-29)
+  mlp32x3:  {width: 32,  hidden: 3}
+  # amendment-1 item 6: bounded non-gating d4 capacity audit (never
+  # selects the primary profile; hard ceiling W<=512, H<=16)
+  mlp256x16: {width: 256, hidden: 16}
+  mlp512x12: {width: 512, hidden: 12}
+  mlp512x16: {width: 512, hidden: 16}
+  # legacy names (pre-finalization studies)
+  tiny:   {width: 32,  hidden: 4}
+  w16:    {width: 16,  hidden: 4}    # capacity ladder at fixed depth (freeze-setup cal-d6)
+  w64:    {width: 64,  hidden: 4}
+  w128:   {width: 128, hidden: 4}
+  small:  {width: 64,  hidden: 6}
+  medium: {width: 128, hidden: 8}
+  large:  {width: 256, hidden: 10}
+  v10_ref: {width: 64, hidden: 2}    # the 3-linear MLP the kernel axdn/dchn results used
+
+# --- per-run globals (merged into every spec.json) ----------------------------------
+device: auto                # cpu on cpu-* nodes, cuda on gpu-* nodes
+torch_threads: 2            # threads PER CELL; a dispatch job fills its allocation by
+                            # running cpus // torch_threads cells at once (dispatch.width)
+test_evaluation: development   # forbidden | development | final -- `final` unseals the frozen pool
+retain:                     # checkpoints the post-hoc evaluation consumes (probes, A-matrix).
+                            # Applies to final cells; the pipeline forces both off for
+                            # pilot/hpo cells (their checkpoints feed nothing downstream).
+  best_pt: true             # selected best-validation checkpoint -> best.pt
+  init_pt: true             # exact pre-training initialization -> init.pt (A^init baseline)
+connectivity: false
+
+# --- catalog: execution profiles ----------------------------------------------------
+dispatch_profiles:          # selected by name; overridable at the CLI
+  # `width` (concurrent cells per job) is left unset so it resolves to
+  # cpus // torch_threads -- one runnable thread per allocated core. Sizes below are
+  # measured in a dispatch-width study (not shipped): parallel efficiency
+  # holds at 0.95 (width 12) and 0.88 (width 24), and queue wait is flat in width on
+  # both QoS.
+  cpu_free:               # empty gres -> no --gres line, no CUDA preflight
+    python: python
+    job_prefix: csfr
+    num_jobs: 45            # <= the free_qos job cap
+    time: "06:00:00"
+    cpus: 12                # 12-core shape on BOTH queues: the feeder submits identical scripts to
+                            # free_qos and paid_qos, and the paid tier caps the cores of one user --
+                            # 24-core scripts throttled there; width-12 parallel
+                            # efficiency is 0.95 (dispatch-width study)
+    mem: 48G                # per-cpu 4G routes to the small-memory partition class
+    partition: cpu-class-a
+    gres: ""
+    account: <account>
+    qos: free_qos
+  cpu_paid:              # paid + not preempted; num_jobs sits under the paid tier's submitted-job cap
+    python: python
+    job_prefix: csfr
+    num_jobs: 495
+    time: "06:00:00"
+    cpus: 12                # the paid tier caps jobs and cores; num_jobs x 12 sits
+                            # just under both, and wider buys no extra concurrency
+    mem: 48G                # per-cpu 4G routes to cpu-class-a
+    partition: cpu-class-a
+    gres: ""
+    account: <account>
+    qos: paid_qos
+  gpu_free:           # cheapest allowlisted card
+    python: python
+    job_prefix: csfr
+    num_jobs: 45
+    time: "06:00:00"
+    cpus: 2
+    mem: 16G
+    partition: gpu-class-a
+    gres: gpu:1
+    account: <account>
+    qos: free_qos
+
+# --- catalog: task families ---------------------------------------------------------
+task_catalog:
+  version: 1
+  defaults:                 # merged into every preset
+    input_distribution: normal   # or `uniform` = U[-sqrt3, sqrt3], variance 1
+    wiring:
+      mode: balanced_partition
+    calibration:
+      mc_pool: 262144
+      activation_band: [0.35, 0.65]
+      max_redraws: 40
+      min_node_sd: 0.001
+  tasks:
+    # ====== frozen suite (target-design.md §5, csfrbench-targets/freeze-1.0) ======
+    # Knobs are configuration, never names: rho, sigma_shape, sigma_omega, f,
+    # d, k, profile, w, sigma^2. Defaults and roles per §10; appendix
+    # cells (sigma_shape in {2,4}, k = 4, L = 4, tri f >= 2, matched flat) are
+    # composed explicitly in study configs, never standing presets.
+    node_anova:             # slot A -- anchor: local fitting + sparse discovery
+      presets:
+        default:    {k: 2, rho: 0.5, input_distribution: uniform_pm1}
+        shaped_s1:  {k: 2, rho: 0.5, sigma_shape: 1.0, input_distribution: uniform_pm1}
+
+    flat_anova:             # slot B -- anchor/control: disjoint pairs, additive root
+      presets:
+        w4:           {w: 4, rho: 0.5, input_distribution: uniform_pm1}
+        w4_shaped_s1: {w: 4, rho: 0.5, sigma_shape: 1.0, input_distribution: uniform_pm1}
+
+    tree_anova:             # slot C -- PRIMARY: plain = mechanistic, shaped s1 = empirical
+      presets:
+        depth3:           {k: 2, layer_profile: [4, 2, 1], rho: 0.5, input_distribution: uniform_pm1}
+        depth2:           {k: 2, layer_profile: [2, 1], rho: 0.5, input_distribution: uniform_pm1}
+        depth3_shaped_s1: {k: 2, layer_profile: [4, 2, 1], rho: 0.5, sigma_shape: 1.0,
+                           input_distribution: uniform_pm1}
+        ternary_depth2:   {k: 3, layer_profile: [3, 1], rho: 0.5, input_distribution: uniform_pm1}
+        # guidance-matched depth ladder: rho_L = 1 - 0.125^(1/L), Gamma1 = 0.125 (§6.3)
+        gm_depth1:        {k: 2, layer_profile: [1], rho: 0.875, input_distribution: uniform_pm1}
+        gm_depth2:        {k: 2, layer_profile: [2, 1], rho: 0.6464466094067263,
+                           input_distribution: uniform_pm1}
+        # cross-law comparator for the fourier 1.2 point: Gamma1 = 0.63^3 = 0.250 (§6.3)
+        depth3_rho037:    {k: 2, layer_profile: [4, 2, 1], rho: 0.37, input_distribution: uniform_pm1}
+        # v1 finalization depth-generalization candidates (Stage A; not core)
+        depth4:           {k: 2, layer_profile: [8, 4, 2, 1], rho: 0.5, input_distribution: uniform_pm1}
+        depth4_shaped_s1: {k: 2, layer_profile: [8, 4, 2, 1], rho: 0.5, sigma_shape: 1.0,
+                           input_distribution: uniform_pm1}
+        # Gamma1-matched d3->d4 companion; rho* = 0.305 frozen 2026-08-23 by
+        # the declared probe rule (A21.5), realized Gamma1 0.1356 +- 0.0097
+        depth4_shaped_gm: {k: 2, layer_profile: [8, 4, 2, 1], rho: 0.305, sigma_shape: 1.0,
+                           input_distribution: uniform_pm1}
+
+    tree_relu:              # slot D -- diagnostic anchor: realizable ridge teacher
+      presets:
+        binary_depth3: {k: 2, layer_profile: [4, 2, 1], input_distribution: uniform_pm1}
+
+    dag_anova:              # slot E -- structural extension: one intermediate
+      presets:              # feeds two downstream nodes, additive readout (§5.2)
+        default:   {rho: 0.5, input_distribution: uniform_pm1}
+        shaped_s1: {rho: 0.5, sigma_shape: 1.0, input_distribution: uniform_pm1}
+        depth4_shaped_s1: {rho: 0.5, sigma_shape: 1.0, depth: 4,
+                           input_distribution: uniform_pm1}
+
+    tree_tri:               # slot F -- stress: zero guidance at f = 1; the
+      presets:              # depth-2 <-> depth-3 pair is the experiment (§4.4)
+        binary_depth3:    {k: 2, layer_profile: [4, 2, 1], input_distribution: uniform_pm1}
+        binary_depth2:    {k: 2, layer_profile: [2, 1], input_distribution: uniform_pm1}
+
+    dense_anova:            # slot G -- decomposability-removal negative control;
+      presets:              # never a matched tree baseline (§5.3)
+        default:   {A: 8, rho: 0.5, input_distribution: uniform_pm1}
+        shaped_s1: {A: 8, rho: 0.5, sigma_shape: 1.0, input_distribution: uniform_pm1}
+
+    tree_fourier:           # validation -- required non-ANOVA check (§5.4);
+      presets:              # frozen k = 2, Q = 8 (§4.2)
+        binary_depth3:    {k: 2, layer_profile: [4, 2, 1], sigma_omega: 0.85,
+                           input_distribution: uniform_pm1}
+        binary_depth3_lo: {k: 2, layer_profile: [4, 2, 1], sigma_omega: 0.42,
+                           input_distribution: uniform_pm1}
+        binary_depth3_hi: {k: 2, layer_profile: [4, 2, 1], sigma_omega: 1.7,
+                           input_distribution: uniform_pm1}
+        # cross-law matched point: largest oracle-solvable bandwidth (§6.3);
+        # measured Gamma_1 ~ 0.255, paired with tree_anova depth3_rho037
+        binary_depth3_12: {k: 2, layer_profile: [4, 2, 1], sigma_omega: 1.2,
+                           input_distribution: uniform_pm1}
+        # recorded stress point: the fourier composition wall (LocalOracle
+        # fits every node, OracleGraph plateaus ~0.25); never primary
+        binary_depth3_165: {k: 2, layer_profile: [4, 2, 1], sigma_omega: 1.65,
+                            input_distribution: uniform_pm1}
+        # v1 finalization depth-generalization candidate (Stage A; not core)
+        binary_depth4:    {k: 2, layer_profile: [8, 4, 2, 1], sigma_omega: 0.85,
+                           input_distribution: uniform_pm1}
+
+    dense_fourier:          # high-arity fourier control; frozen_v1 selected by the
+      presets:              # v1 finalization Stage-A target-only calibration
+        frozen_v1: {A: 8, Q: 24, sigma_omega: 1.5, input_distribution: uniform_pm1}
+        # starting proposal (failed role gates: 77% first-order, rank-collapsed)
+        default: {A: 8, Q: 8, sigma_omega: 0.85, input_distribution: uniform_pm1}
+
+    dag_fourier:            # finalization candidate -- fourier reuse regime
+      presets:
+        default: {sigma_omega: 0.85, input_distribution: uniform_pm1}
+        # depth+reuse fourier column; A21.4 conditional trigger satisfied 2026-08-23
+        depth4:  {sigma_omega: 0.85, depth: 4, input_distribution: uniform_pm1}
+
+    rand_anova:             # graph-generalization extension (ext-graphgen-1.0);
+      presets:              # the graph varies with the function seed (frozen derivation)
+        shaped_s1: {rho: 0.5, sigma_shape: 1.0, input_distribution: uniform_pm1}
+
+    rand_fourier:
+      presets:
+        default: {sigma_omega: 0.85, input_distribution: uniform_pm1}

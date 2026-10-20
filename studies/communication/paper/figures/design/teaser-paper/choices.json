@@ -1,0 +1,149 @@
+{
+ "tree": {
+  "stem": "tree_f6002_n32768__lewi-v1-rgm",
+  "seed": 6002,
+  "n": 32768,
+  "test_nmse": 0.0537735817278388,
+  "rule": "relaxed fit and units: no candidate reaches FIT; within FIT_BAND x the best test NMSE, the most units on the sparsest intermediate, then the ranking",
+  "eligible_candidates": 0,
+  "candidates": 16,
+  "recall": 1.0,
+  "units": "19 24 21 19 9 15 4",
+  "view_score": 0.384061519676732,
+  "direction": {
+   "elev": -26.15,
+   "azim": 59.01
+  },
+  "camera": {
+   "elev": -26.15,
+   "azim": 59.01,
+   "roll": -89.64
+  }
+ },
+ "ftree": {
+  "stem": "ftree_f6003_n32768__lewi-v1-rgm",
+  "seed": 6003,
+  "n": 32768,
+  "test_nmse": 0.0039424868658101,
+  "rule": "eligible: test NMSE <= FIT and >= MIN_UNITS hidden units on every intermediate",
+  "eligible_candidates": 12,
+  "candidates": 16,
+  "recall": 1.0,
+  "units": "13 10 17 22 9 9 11",
+  "view_score": 0.47139110123961137,
+  "direction": {
+   "elev": -25.13,
+   "azim": -5.23
+  },
+  "camera": {
+   "elev": 25.13,
+   "azim": 174.77,
+   "roll": 134.16
+  }
+ },
+ "dag": {
+  "stem": "dag_f6008_n32768__lewi-v1-rgm",
+  "seed": 6008,
+  "n": 32768,
+  "test_nmse": 0.0139430091885116,
+  "rule": "eligible: test NMSE <= FIT and >= MIN_UNITS hidden units on every intermediate",
+  "eligible_candidates": 1,
+  "candidates": 16,
+  "recall": 0.8571428571428571,
+  "units": "10 26 31 12 7 9 7",
+  "view_score": 0.3091754840769858,
+  "direction": {
+   "elev": 1.32,
+   "azim": 100.89
+  },
+  "camera": {
+   "elev": -1.32,
+   "azim": -79.11,
+   "roll": 169.32
+  }
+ },
+ "fdag": {
+  "stem": "fdag_f6007_n32768__lewi-v1-rgm",
+  "seed": 6007,
+  "n": 32768,
+  "test_nmse": 0.0028740283792838,
+  "rule": "eligible: test NMSE <= FIT and >= MIN_UNITS hidden units on every intermediate",
+  "eligible_candidates": 2,
+  "candidates": 4,
+  "recall": 0.8571428571428571,
+  "units": "14 27 25 12 9 9 9",
+  "view_score": 0.3363875232436607,
+  "direction": {
+   "elev": 11.93,
+   "azim": -138.97
+  },
+  "camera": {
+   "elev": -11.93,
+   "azim": 41.03,
+   "roll": 50.64
+  }
+ },
+ "flat": {
+  "stem": "flat_f6003_n32768__lewi-v1-rgm",
+  "seed": 6003,
+  "n": 32768,
+  "test_nmse": 0.0017319052518522,
+  "rule": "eligible: test NMSE <= FIT and >= MIN_UNITS hidden units on every intermediate",
+  "eligible_candidates": 16,
+  "candidates": 16,
+  "recall": 1.0,
+  "units": "16 24 18 28",
+  "view_score": 0.5606280317832807,
+  "direction": {
+   "elev": -11.39,
+   "azim": 162.55
+  },
+  "camera": {
+   "elev": -11.39,
+   "azim": 162.55,
+   "roll": -45.29
+  }
+ },
+ "dense": {
+  "stem": "dense_f6010_n32768__lewi-v1-rgm",
+  "seed": 6010,
+  "n": 32768,
+  "test_nmse": 0.0176863443825801,
+  "rule": "eligible: test NMSE <= FIT and >= MIN_UNITS hidden units on every intermediate",
+  "eligible_candidates": 9,
+  "candidates": 16,
+  "recall": null,
+  "units": "85",
+  "view_score": 0.7980021410700411,
+  "direction": {
+   "elev": 21.6,
+   "azim": -141.49
+  },
+  "camera": {
+   "elev": 21.6,
+   "azim": -141.49,
+   "roll": 44.47
+  }
+ },
+ "rand": {
+  "stem": "rand_f6013_n32768__lewi-v1-rgm",
+  "seed": 6013,
+  "n": 32768,
+  "test_nmse": 0.0097046278253434,
+  "rule": "eligible: test NMSE <= FIT and >= MIN_UNITS hidden units on every intermediate",
+  "eligible_candidates": 2,
+  "candidates": 32,
+  "recall": 0.7142857142857143,
+  "units": "17 17 19 20 19 8 8",
+  "view_score": 0.36988692362807246,
+  "direction": {
+   "elev": 53.53,
+   "azim": -145.02
+  },
+  "camera": {
+   "elev": -53.53,
+   "azim": 34.98,
+   "roll": 8.76
+  }
+ }
+}

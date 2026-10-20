@@ -1,0 +1,168 @@
+{
+ "generated_local": "2026-09-15",
+ "profile": {
+  "width": 64,
+  "hidden": 8,
+  "max_steps": 128000,
+  "eval_every": 2000,
+  "label": "64x8, 128,000 steps"
+ },
+ "reference": {
+  "what": "GraphOracle(all), depth-5 tree, n = 2^17, 64x8 / 128,000 steps",
+  "test_nmse": 0.106,
+  "source": "versions/v1.1/calibration/a7_profiles/a7_checks.json"
+ },
+ "thresholds": {
+  "realized_below": 0.5,
+  "floor_at_bottom": 0.5
+ },
+ "cells": [
+  {
+   "cell": "dag16",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 4,
+   "test_at_top": 0.013293095433395845,
+   "test_at_bottom": 0.4062359925925219,
+   "ratio_to_reference": 0.12540656069241363,
+   "realized": true,
+   "grid_spans_transition": null,
+   "verdict": "realized"
+  },
+  {
+   "cell": "dag16",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 4,
+   "test_at_top": 0.2210190088370979,
+   "test_at_bottom": 0.9439935671275222,
+   "ratio_to_reference": 2.085084989029226,
+   "realized": true,
+   "grid_spans_transition": true,
+   "verdict": "realized"
+  },
+  {
+   "cell": "dense16",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 4,
+   "test_at_top": 0.00676107782106323,
+   "test_at_bottom": 0.27334692676234384,
+   "ratio_to_reference": 0.0637837530288984,
+   "realized": true,
+   "grid_spans_transition": false,
+   "verdict": "realized; grid does not span a transition for Dense"
+  },
+  {
+   "cell": "dense16_q24s10",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 4,
+   "test_at_top": 0.0036493357006962914,
+   "test_at_bottom": 0.08299664646956792,
+   "ratio_to_reference": 0.034427695289587654,
+   "realized": true,
+   "grid_spans_transition": false,
+   "verdict": "realized; grid does not span a transition for Dense"
+  },
+  {
+   "cell": "dense16_q48s075",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 4,
+   "test_at_top": 0.005275165901344743,
+   "test_at_bottom": 0.056085353485459136,
+   "ratio_to_reference": 0.049765716050422105,
+   "realized": true,
+   "grid_spans_transition": false,
+   "verdict": "realized; grid does not span a transition for Dense"
+  },
+  {
+   "cell": "dense16_q48s10",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 4,
+   "test_at_top": 0.009938179433205383,
+   "test_at_bottom": 0.11621558608693819,
+   "ratio_to_reference": 0.0937564097472206,
+   "realized": true,
+   "grid_spans_transition": false,
+   "verdict": "realized; grid does not span a transition for Dense"
+  },
+  {
+   "cell": "flat16",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 4,
+   "test_at_top": 0.0005390836121712887,
+   "test_at_bottom": 0.008072074475647641,
+   "ratio_to_reference": 0.00508569445444612,
+   "realized": true,
+   "grid_spans_transition": null,
+   "verdict": "realized"
+  },
+  {
+   "cell": "flat16",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 4,
+   "test_at_top": 0.0032318802671623447,
+   "test_at_bottom": 0.28185243953329353,
+   "ratio_to_reference": 0.03048943648266363,
+   "realized": true,
+   "grid_spans_transition": false,
+   "verdict": "realized; grid does not span a transition for Dense"
+  },
+  {
+   "cell": "ftree16",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 4,
+   "test_at_top": 0.003574034792752053,
+   "test_at_bottom": 0.08224033140682539,
+   "ratio_to_reference": 0.03371730936558541,
+   "realized": true,
+   "grid_spans_transition": null,
+   "verdict": "realized"
+  },
+  {
+   "cell": "ftree16",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 4,
+   "test_at_top": 0.019139347978656417,
+   "test_at_bottom": 0.6603703129555083,
+   "ratio_to_reference": 0.18055988659109828,
+   "realized": true,
+   "grid_spans_transition": true,
+   "verdict": "realized"
+  },
+  {
+   "cell": "tree16",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 4,
+   "test_at_top": 0.15536274092357275,
+   "test_at_bottom": 0.9292184438808984,
+   "ratio_to_reference": 1.4656862351280449,
+   "realized": true,
+   "grid_spans_transition": null,
+   "verdict": "realized"
+  },
+  {
+   "cell": "tree16",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 4,
+   "test_at_top": 0.7671767918178374,
+   "test_at_bottom": 0.9976009694352639,
+   "ratio_to_reference": 7.237516903941862,
+   "realized": false,
+   "grid_spans_transition": false,
+   "verdict": "capacity-limited"
+  }
+ ],
+ "dense16_preset": "a16",
+ "dense16_reason": "first candidate in the pre-registered order whose Dense reference is realized at n = 2^17 (test NMSE 0.007)",
+ "note": "A workload is realized if its reference arm - GraphOracle(all), or Dense where every GraphOracle rung is degenerate - is clearly below the predict-the-mean floor at the top of the grid. A capacity-limited workload still runs; the report says plainly that its cell is capacity-limited."
+}

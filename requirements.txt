@@ -1,0 +1,16 @@
+# CSFRBench, the analyses and the figures (Python 3.12). Versions are the ones the reported runs and figures used.
+# Install torch from the CPU index if no GPU is present (the training is CPU-bound, one thread per run):
+#   pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cpu
+torch==2.11.0
+numpy==2.4.4
+scipy==1.17.1
+pandas==3.0.3
+scikit-learn==1.8.0
+matplotlib==3.10.9
+pyarrow==25.0.1
+duckdb==1.5.3
+hydra-core==1.3.5
+omegaconf==2.3.1
+pyyaml==6.0.3
+pypdf==6.19.0
+pytest==8.4.2

@@ -1,0 +1,16 @@
+method,arm,parameter,key,low,high,scale,low_tex,high_tex,source
+Dense,dense,learning rate,lr,8.581926282437752e-05,0.04632881537489325,log-uniform,8.58\times10^{-5},4.63\times10^{-2},studies/main-experiments/18-main-d8/swm-lrx/manifests/spaces_lrx.json [arms][dense][expanded][lr] (adopted 2026-09-24)
+l1,l1,learning rate,lr,4.9356650390836585e-05,0.09853330151490305,log-uniform,4.94\times10^{-5},9.85\times10^{-2},studies/main-experiments/18-main-d8/swm-lrx/manifests/spaces_lrx.json [arms][l1][expanded][lr] (adopted 2026-09-24)
+l1,l1,lambda,lam,1.6573121584718054e-09,1658.9008238687602,log-uniform,1.66\times10^{-9},1.66\times10^{3},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [l1][lam]
+l2,l2,learning rate,lr,0.00034430801521682805,0.03983622418908413,log-uniform,3.44\times10^{-4},3.98\times10^{-2},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [l2][lr]
+l2,l2,lambda,lam,5.215202028212666e-07,90.61260342207568,log-uniform,5.22\times10^{-7},9.06\times10^{1},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [l2][lam]
+L0,l0hc,learning rate,lr,0.0013015955067834136,0.06495995865745752,log-uniform,1.30\times10^{-3},6.50\times10^{-2},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [l0hc][lr]
+L0,l0hc,lambda,lam,2.7453237018182312e-09,160.58144605160433,log-uniform,2.75\times10^{-9},1.61\times10^{2},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [l0hc][lam]
+RigL,rigl,learning rate,lr,0.00014123639275020406,0.016039745188947747,log-uniform,1.41\times10^{-4},1.60\times10^{-2},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [rigl][lr]
+RigL,rigl,density,density,0.015758679781329315,1.0,log-uniform,1.58\times10^{-2},1,studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [rigl][density]
+BIMT,bimt,learning rate,lr,0.00038505847865881015,0.012176618249211775,log-uniform,3.85\times10^{-4},1.22\times10^{-2},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [bimt][lr]
+BIMT,bimt,lambda,lam,1.2477118358702882e-08,0.007363198315564782,log-uniform,1.25\times10^{-8},7.36\times10^{-3},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [bimt][lam]
+Fiedler,fiedler,learning rate,lr,0.0001832085564062886,0.01675019779454036,log-uniform,1.83\times10^{-4},1.68\times10^{-2},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [fiedler][lr]
+Fiedler,fiedler,delta,delta,2.02612063484657e-09,283660.6859442956,log-uniform,2.03\times10^{-9},2.84\times10^{5},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [fiedler][delta]
+Learned neuron positions,erb,learning rate,lr,0.00021464043643314745,0.13532840110890998,log-uniform,2.15\times10^{-4},1.35\times10^{-1},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [erb][lr]
+LeWi,lewi,learning rate,lr,9.661385333453471e-05,0.025323915406530305,log-uniform,9.66\times10^{-5},2.53\times10^{-2},studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json [lewi][lr]

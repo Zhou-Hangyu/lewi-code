@@ -1,0 +1,59 @@
+{
+ "stem": null,
+ "title": null,
+ "elev": null,
+ "azim": null,
+ "roll": null,
+ "lim": null,
+ "cube_fill": 0.9,
+ "style": {
+  "point": 8.2,
+  "focus": 1.0,
+  "background": 0.38,
+  "faint": 0.4,
+  "edge_alpha": 0.8,
+  "edge_width": 0.5,
+  "fade_far": 0.4,
+  "axis_alpha": 1.0,
+  "axis_width": 0.5,
+  "star": 4.2,
+  "readout_boost": 1.25,
+  "readout_width": 1.5,
+  "star_near": 0.0,
+  "axis_reach": 0.9
+ },
+ "hide": {
+  "0": true,
+  "1": true,
+  "2": true,
+  "3": true,
+  "4": true
+ },
+ "show_background": false,
+ "show_cube": true,
+ "show_readout": true,
+ "show_axes": true,
+ "show_legend": false,
+ "show_depth": false,
+ "glyphs": true,
+ "colours": {
+  "7": "#52b01e"
+ },
+ "layout": {
+  "gap": 0.03,
+  "gap_tree": 0.04,
+  "height": 1.85,
+  "tree": 0.56,
+  "pad": 0.03
+ },
+ "cube": {
+  "elev": 22,
+  "azim": -55,
+  "roll": 0,
+  "offset": [
+   0.0,
+   0.0
+  ]
+ },
+ "note": "the delivered look (design/teaser/settings-starburst-cube-side.json): its style, hidden background units, cube camera 22 / -55 and layout; the view (elev, azim, roll) is the searched direction under build.frame_for's orientation rule, the cube the smallest one of that stance around the associated units and the output, times cube_fill"
+}

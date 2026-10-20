@@ -1,0 +1,86 @@
+{
+ "recorded_at": "2026-09-23",
+ "rule": "For the arms dense and l1 the lower bound of the learning-rate range is extended by one log10 decade (low_new = low_old / 10); the upper bound and every other hyperparameter range are unchanged; the same rule for both arms; no other arm and no other part of the protocol changes.",
+ "source": "studies/main-experiments/09-swm-lewi/results/spaces_final_v2.json",
+ "source_sha256": "1118b69548b82be169ae11fb5678fe0d22e4b2cb0854e0779275bc5be6ccf03c",
+ "arms": {
+  "dense": {
+   "record": {
+    "lr": [
+     0.0008581926282437753,
+     0.04632881537489325,
+     true
+    ]
+   },
+   "expanded": {
+    "lr": [
+     8.581926282437752e-05,
+     0.04632881537489325,
+     true
+    ]
+   },
+   "lr_low_record": 0.0008581926282437753,
+   "lr_low_expanded": 8.581926282437752e-05,
+   "lr_high": 0.04632881537489325
+  },
+  "l1": {
+   "record": {
+    "lam": [
+     1.6573121584718054e-09,
+     1658.9008238687602,
+     true
+    ],
+    "lr": [
+     0.0004935665039083659,
+     0.09853330151490305,
+     true
+    ]
+   },
+   "expanded": {
+    "lam": [
+     1.6573121584718054e-09,
+     1658.9008238687602,
+     true
+    ],
+    "lr": [
+     4.9356650390836585e-05,
+     0.09853330151490305,
+     true
+    ]
+   },
+   "lr_low_record": 0.0004935665039083659,
+   "lr_low_expanded": 4.9356650390836585e-05,
+   "lr_high": 0.09853330151490305
+  }
+ },
+ "amendment_1": {
+  "recorded_at": "2026-09-23",
+  "rule": "the validation-only second-stage re-selection of 18-main-d8/swm-rollout joins the re-run, unchanged: trigger (fragility >= log10 1.5 or an exploded final, and a validation bump >= 0.10 log10 above both neighbour sizes), K = 4 candidates by the record's key, M = 8 seeds of the bank 'resel', selection by the mean log10 validation rollout score then one-step then rank, the 16 finals of a changed winner; the comparison against the adopted record",
+  "K": 4,
+  "M": 8,
+  "bank": "resel",
+  "fragility_min_log10": 0.17609125905568124,
+  "val_bump_min_log10": 0.1,
+  "exploded_log10": 1.0,
+  "seeds_final": 16,
+  "before_any_stage2_unit": true,
+  "disclosure": "a partial test run of the reader at 20:05 computed test AULC of 31 complete cells; the trigger and the selection use validation only"
+ },
+ "adoption": {
+  "recorded_at": "2026-09-24",
+  "decision_date": "2026-09-24",
+  "rule": "the re-run's finals (the selected configuration of every cell on the record's 16 paired final seeds; the second stage changed no winner) are the adopted record's Dense and L1 arms on the 17 counted tasks, both arms together; LeWi and every other arm unchanged (the in5 seeds and the re-selection); the record's Dense and L1 finals stay in the sealed and the prior tables",
+  "cells": 238,
+  "finals": 3808,
+  "arms": [
+   "dense",
+   "l1"
+  ],
+  "source": "tables/finals.csv (src/lrx_read.py from results/csfrbench/swmlrx/lrx/<task>/n<n>/<arm>/final-s<seed>.json)",
+  "names": {
+   "prior": "the record the re-run was compared against: the record as run with the in5 seeds and the re-selection (called adopted before this adoption)",
+   "updated": "the comparison with the re-run arms: the adopted record's",
+   "sealed": "the record as run"
+  }
+ }
+}

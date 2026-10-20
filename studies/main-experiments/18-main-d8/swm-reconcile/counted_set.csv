@@ -1,0 +1,18 @@
+task_id,display_name,figure_group,grid,n_min,n_max,dense_over_ridge,regime_ratio,capacity_headroom,screen_256x4
+acrobot,Acrobot,continuous control,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.0,7.92,1.253,pass
+ballincup,Ball in cup,continuous control,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.023,5.602,0.764,pass
+cartpole,Cartpole,continuous control,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.001,9.342,0.906,pass
+cheetah,Cheetah,continuous control,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.17,2.203,1.002,pass
+finger,Finger,continuous control,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.516,2.026,0.911,pass
+hopper,Hopper,continuous control,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.588,2.083,1.023,pass
+ogbmaze,OGBench maze,navigation,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.002,7.386,0.648,pass
+pendulum,Pendulum,continuous control,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.0,3.053,1.402,pass
+pendulumctl,Pendulum (Gymnasium),continuous control,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.0,2.102,1.403,pass
+pointmaze,Point maze,navigation,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.005,3.818,0.61,pass
+reacher,Reacher,continuous control,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.001,9.928,1.225,pass
+tworoom,Two-room,navigation,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.002,4.847,1.047,pass
+walker,Walker,continuous control,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.678,1.703,1.024,pass
+pusht,PushT,manipulation,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.546,1.796,0.918,pass
+manipulator,Manipulator,manipulation,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.676,1.603,0.836,pass
+piecewise,Piecewise,synthetic,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.003,2.414,0.916,pass
+quadruped,Quadruped,continuous control,"8,192 .. 524,288 (2^13 .. 2^19, 7 sizes)",8192,524288,0.89,2.057,1.001,pass

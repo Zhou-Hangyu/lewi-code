@@ -1,0 +1,17 @@
+setting,cell,workload,ledger_rows,no_checkpoint_path,path_not_found,ledger_checkpoint,archived,rerun,rerun_missing,covered,instances_ledger,instances_covered
+d8,tree8,depth-4 tree,112,0,0,112,0,0,0,112,16,16
+d8,dag8,depth-3 reuse DAG,112,0,0,34,78,0,0,112,16,16
+d8,ftree8,depth-4 Fourier tree,112,0,0,36,76,0,0,112,16,16
+d8,flat8,flat modules,112,0,0,40,72,0,0,112,16,16
+d8,dense8,high-arity node,112,0,0,35,77,0,0,112,16,16
+d8,fdag8,depth-3 Fourier reuse DAG,112,74,0,37,1,74,0,112,16,16
+d8,rand8,sampled depth-4 DAGs,224,0,0,72,152,0,0,224,32,32
+d8,tree5d16,depth-5 tree (d = 16),112,94,0,2,16,94,0,112,16,16
+d32s,tree32s,depth-4 tree,112,0,0,112,0,0,0,112,16,16
+d32s,dag32s,depth-3 reuse DAG,112,0,0,112,0,0,0,112,16,16
+d32s,ftree32s,depth-4 Fourier tree,112,0,0,112,0,0,0,112,16,16
+d32s,flat32s,flat modules,112,0,0,112,0,0,0,112,16,16
+d32s,dense32s,high-arity node,112,0,0,112,0,0,0,112,16,16
+d32s,fdag32s,depth-3 Fourier reuse DAG,112,0,0,112,0,0,0,112,16,16
+d32s,rand32s,sampled depth-4 DAGs,224,0,0,224,0,0,0,224,32,32
+d32s,tree5d32,depth-5 tree (d = 32),112,0,0,112,0,0,0,112,16,16

@@ -1,0 +1,939 @@
+{
+ "read_local": "2026-09-16",
+ "contract": {
+  "frozen": true,
+  "frozen_local": "2026-09-13",
+  "width": 256,
+  "hidden": 4,
+  "max_steps": 128000,
+  "grids": {
+   "acrobot": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "ballincup": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "cartpole": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "cheetah": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "finger": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "hopper": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "ogbmaze": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "pendulum": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "pendulumctl": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "pointmaze": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "reacher": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "tworoom": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "walker": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "pusht": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "humanoid": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288
+   ],
+   "ogbcube": [
+    1024,
+    2048,
+    4096,
+    8192,
+    16384,
+    32768,
+    65536
+   ]
+  },
+  "ogbcube_xl": false,
+  "decision": {
+   "rule": "adopt the larger setting only if the paired mean log10 test rollout-16 ratio over cells x arms <= -0.0414 and better on a majority of cells (09 contract v2)",
+   "read_local": "2026-09-13",
+   "comparisons": {
+    "comparisons": {
+     "S0->S1": {
+      "what": "budget 128k -> 256k at 128x4",
+      "pairs": 20,
+      "mean_dlog10": 0.02302560534060882,
+      "mean": 0.02302560534060882,
+      "lo": -0.017482230373767126,
+      "hi": 0.06353344105498476,
+      "n": 20,
+      "cells": 9,
+      "cells_better": 3,
+      "adopt": false,
+      "per_cell": {
+       "cheetah/n8192/dense": 0.02031038737268631,
+       "cheetah/n8192/lewi-v1": 0.04919938805967328,
+       "cheetah/n131072/dense": -0.021421721659798276,
+       "finger/n8192/dense": 0.04293766905582541,
+       "finger/n8192/lewi-v1": -0.00692259965841339,
+       "humanoid/n8192/dense": 0.04796875812700031,
+       "ogbcube/n1024/dense": 0.22638057414277465,
+       "ogbcube/n16384/dense": -0.07171573825900202,
+       "pusht/n8192/dense": 0.0049560114220073
+      }
+     },
+     "S0->S2a": {
+      "what": "width 128 -> 256 at 128k",
+      "pairs": 33,
+      "mean_dlog10": -0.10798170988933965,
+      "mean": -0.10798170988933965,
+      "lo": -0.16350379616369703,
+      "hi": -0.052459623614982284,
+      "n": 33,
+      "cells": 12,
+      "cells_better": 12,
+      "adopt": true,
+      "per_cell": {
+       "cheetah/n8192/dense": -0.02662121962920022,
+       "cheetah/n131072/dense": -0.029893024447574135,
+       "finger/n8192/dense": -0.020515821102893086,
+       "finger/n131072/dense": -0.05621248120752012,
+       "humanoid/n8192/dense": -0.19961715491481816,
+       "humanoid/n131072/dense": -0.3083961837039002,
+       "ogbcube/n1024/dense": -0.08632841224628633,
+       "ogbcube/n1024/lewi-v1": -0.015523923420893815,
+       "ogbcube/n16384/dense": -0.31075591521446205,
+       "ogbcube/n16384/lewi-v1": -0.40657769848614617,
+       "pusht/n131072/dense": -0.023882467511717298,
+       "pusht/n131072/lewi-v1": -0.33733940529380035
+      }
+     }
+    }
+   },
+   "positions": [
+    {
+     "setting": "S0",
+     "frac_mean": 0.6908783783783784,
+     "frac_median": 0.759765625,
+     "share_last10": 0.40540540540540543,
+     "diverged": 0,
+     "wall_median_s": 826.775923371315,
+     "instances": 74
+    },
+    {
+     "setting": "S1",
+     "frac_mean": 0.52626953125,
+     "frac_median": 0.4140625,
+     "share_last10": 0.25,
+     "diverged": 0,
+     "wall_median_s": 1405.8412535190582,
+     "instances": 20
+    },
+    {
+     "setting": "S2a",
+     "frac_mean": 0.5785590277777778,
+     "frac_median": 0.615234375,
+     "share_last10": 0.3055555555555556,
+     "diverged": 0,
+     "wall_median_s": 1301.9203151464462,
+     "instances": 36
+    }
+   ],
+   "outcome": "width 128 -> 256 at 128k steps adopted (mean paired dlog10 -0.108, 95% CI -0.164 to -0.052, better on 12 of 12 cells over 33 pairs); steps 128k -> 256k at 128 x 4 not adopted (mean +0.023, CI -0.017 to +0.064, better on 3 of 9 cells over 20 pairs); the threshold -0.0414 lies outside both intervals (no marginal-band decision). The S1 -> S2b comparison (256k steps at 256 x 4) has no data: its units (40-80+ min) could not survive the compute regime below; the S0 -> S1 result at width 128 and the checkpoint positions at S2a (mean fraction 0.58, median 0.62, 31% in the last tenth, no divergence) stand for the horizon check. The audit was read before its finals completed (S0 74/80, S1 20/80, S2a 36/80 instances) because every further hour of audit packs delayed the finals by the same hour.",
+   "compute_regime": "the free tier preempts long jobs; packs of the finals run short walls; a unit starts only if its arm's reserve fits before the deadline; the 256k-step settings are not runnable this way."
+  },
+  "unit_reserve_s_at_128x4_128k": {
+   "dense": 900,
+   "lewi-v1": 1560,
+   "other arms": 1200,
+   "width_256_factor": 1.9
+  },
+  "stragglers": {
+   "amended_local": "2026-09-14",
+   "what": "the 627 L2 trial units (of 32,256) still pending at that point run under torch.set_flush_denormal(True), and the finals of a cell whose winner trial was flushed share its numerics; every such record carries flush_denormal: true; every other arm never flushes",
+   "cause": "subnormal floats in the gradients of a collapsed L2 trial (penalty strength >= 0.1): 32-62 ms per step instead of 5.4 ms, so a 128k-step unit needs about two hours and no free_qos pack survives that long",
+   "evidence": [
+    "external/analysis/subnormal_timing.csv",
+    "external/analysis/l2_trial_wall_by_lambda.csv",
+    "external/analysis/flush_check/ (paired runs of the same unit with and without the flush)"
+   ],
+   "checks": [
+    "flush-to-zero only in the L2 arm, recorded per unit",
+    "no mixed cell: a flushed winner's finals are all flushed, an unflushed winner's finals all unflushed"
+   ]
+  }
+ },
+ "arms": [
+  "dense",
+  "l1",
+  "l2",
+  "l0hc",
+  "rigl",
+  "fiedler",
+  "bimt",
+  "erb",
+  "lewi-v1"
+ ],
+ "labels": {
+  "dense": "Dense",
+  "l1": "L1",
+  "l2": "L2",
+  "l0hc": "L0",
+  "rigl": "RigL",
+  "fiedler": "Fiedler",
+  "bimt": "BIMT",
+  "erb": "neuron positions",
+  "lewi-v1": "LeWi"
+ },
+ "tasks": [
+  "acrobot",
+  "ballincup",
+  "cartpole",
+  "cheetah",
+  "finger",
+  "hopper",
+  "ogbmaze",
+  "pendulum",
+  "pendulumctl",
+  "pointmaze",
+  "reacher",
+  "tworoom",
+  "walker",
+  "pusht",
+  "humanoid",
+  "ogbcube",
+  "manipulator",
+  "piecewise",
+  "quadruped"
+ ],
+ "tasks_original": [
+  "acrobot",
+  "ballincup",
+  "cartpole",
+  "cheetah",
+  "finger",
+  "hopper",
+  "ogbmaze",
+  "pendulum",
+  "pendulumctl",
+  "pointmaze",
+  "reacher",
+  "tworoom",
+  "walker",
+  "pusht",
+  "humanoid",
+  "ogbcube"
+ ],
+ "tasks_added": [
+  "manipulator",
+  "piecewise",
+  "quadruped"
+ ],
+ "claim_bearing": [
+  "acrobot",
+  "ballincup",
+  "cartpole",
+  "cheetah",
+  "finger",
+  "hopper",
+  "ogbmaze",
+  "pendulum",
+  "pendulumctl",
+  "pointmaze",
+  "reacher",
+  "tworoom",
+  "walker",
+  "pusht",
+  "manipulator",
+  "piecewise",
+  "quadruped"
+ ],
+ "excluded": {
+  "humanoid": "nonlinearity_matters",
+  "ogbcube": "nonlinearity_matters; data_limited_regime; replay_verified"
+ },
+ "grids": {
+  "acrobot": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "ballincup": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "cartpole": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "cheetah": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "finger": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "hopper": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "ogbmaze": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "pendulum": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "pendulumctl": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "pointmaze": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "reacher": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "tworoom": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "walker": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "pusht": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "humanoid": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "ogbcube": [
+   1024,
+   2048,
+   4096,
+   8192,
+   16384,
+   32768,
+   65536
+  ],
+  "manipulator": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "piecewise": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "quadruped": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ]
+ },
+ "trials": 32,
+ "seeds": 16,
+ "h_ref": 16,
+ "tally": {
+  "dense": {
+   "wins": 17,
+   "ties": 1,
+   "losses": 1
+  },
+  "l1": {
+   "wins": 13,
+   "ties": 1,
+   "losses": 5
+  },
+  "l2": {
+   "wins": 15,
+   "ties": 0,
+   "losses": 4
+  },
+  "l0hc": {
+   "wins": 17,
+   "ties": 1,
+   "losses": 1
+  },
+  "rigl": {
+   "wins": 14,
+   "ties": 1,
+   "losses": 4
+  },
+  "fiedler": {
+   "wins": 14,
+   "ties": 4,
+   "losses": 1
+  },
+  "bimt": {
+   "wins": 12,
+   "ties": 2,
+   "losses": 5
+  },
+  "erb": {
+   "wins": 19,
+   "ties": 0,
+   "losses": 0
+  }
+ },
+ "tally_claim_bearing": {
+  "dense": {
+   "wins": 16,
+   "ties": 0,
+   "losses": 1
+  },
+  "l1": {
+   "wins": 13,
+   "ties": 0,
+   "losses": 4
+  },
+  "l2": {
+   "wins": 13,
+   "ties": 0,
+   "losses": 4
+  },
+  "l0hc": {
+   "wins": 16,
+   "ties": 0,
+   "losses": 1
+  },
+  "rigl": {
+   "wins": 14,
+   "ties": 0,
+   "losses": 3
+  },
+  "fiedler": {
+   "wins": 13,
+   "ties": 3,
+   "losses": 1
+  },
+  "bimt": {
+   "wins": 12,
+   "ties": 1,
+   "losses": 4
+  },
+  "erb": {
+   "wins": 17,
+   "ties": 0,
+   "losses": 0
+  }
+ },
+ "strongest_baseline": {
+  "acrobot": {
+   "arm": "fiedler",
+   "label": "Fiedler",
+   "mean_aulc": -3.5093995821396273
+  },
+  "ballincup": {
+   "arm": "bimt",
+   "label": "BIMT",
+   "mean_aulc": -1.8164658708104677
+  },
+  "cartpole": {
+   "arm": "bimt",
+   "label": "BIMT",
+   "mean_aulc": -3.3897804546757606
+  },
+  "cheetah": {
+   "arm": "l2",
+   "label": "L2",
+   "mean_aulc": -1.3491349748330927
+  },
+  "finger": {
+   "arm": "l2",
+   "label": "L2",
+   "mean_aulc": -0.6061372722271384
+  },
+  "hopper": {
+   "arm": "l2",
+   "label": "L2",
+   "mean_aulc": -0.336786460130503
+  },
+  "humanoid": {
+   "arm": "bimt",
+   "label": "BIMT",
+   "mean_aulc": -0.2153557750602903
+  },
+  "manipulator": {
+   "arm": "l1",
+   "label": "L1",
+   "mean_aulc": -0.5721141664632811
+  },
+  "ogbcube": {
+   "arm": "rigl",
+   "label": "RigL",
+   "mean_aulc": -0.6745718672339776
+  },
+  "ogbmaze": {
+   "arm": "l1",
+   "label": "L1",
+   "mean_aulc": -5.019415826642817
+  },
+  "pendulum": {
+   "arm": "rigl",
+   "label": "RigL",
+   "mean_aulc": -4.957875672978836
+  },
+  "pendulumctl": {
+   "arm": "fiedler",
+   "label": "Fiedler",
+   "mean_aulc": -4.432520180044068
+  },
+  "piecewise": {
+   "arm": "bimt",
+   "label": "BIMT",
+   "mean_aulc": -3.8741111461662756
+  },
+  "pointmaze": {
+   "arm": "fiedler",
+   "label": "Fiedler",
+   "mean_aulc": -3.2764237724507517
+  },
+  "pusht": {
+   "arm": "rigl",
+   "label": "RigL",
+   "mean_aulc": -2.0910954140820075
+  },
+  "quadruped": {
+   "arm": "rigl",
+   "label": "RigL",
+   "mean_aulc": -0.44038224882106713
+  },
+  "reacher": {
+   "arm": "bimt",
+   "label": "BIMT",
+   "mean_aulc": -3.3942267844817136
+  },
+  "tworoom": {
+   "arm": "fiedler",
+   "label": "Fiedler",
+   "mean_aulc": -3.7343137814043463
+  },
+  "walker": {
+   "arm": "l2",
+   "label": "L2",
+   "mean_aulc": -0.2962810264714035
+  }
+ },
+ "coverage": {
+  "cells_with_winner": 1197,
+  "cells": 1197,
+  "final_instances": 19152,
+  "final_expected": 19152,
+  "diverged_finals": 0,
+  "errors": 0
+ },
+ "boundary": {
+  "bimt": {
+   "lam": {
+    "low": 9,
+    "high": 0,
+    "cells": 133
+   },
+   "lr": {
+    "low": 7,
+    "high": 4,
+    "cells": 133
+   }
+  },
+  "dense": {
+   "lr": {
+    "low": 28,
+    "high": 0,
+    "cells": 133
+   }
+  },
+  "erb": {
+   "lr": {
+    "low": 1,
+    "high": 0,
+    "cells": 133
+   }
+  },
+  "fiedler": {
+   "delta": {
+    "low": 5,
+    "high": 7,
+    "cells": 133
+   },
+   "lr": {
+    "low": 3,
+    "high": 1,
+    "cells": 133
+   }
+  },
+  "l0hc": {
+   "lam": {
+    "low": 9,
+    "high": 1,
+    "cells": 133
+   },
+   "lr": {
+    "low": 7,
+    "high": 0,
+    "cells": 133
+   }
+  },
+  "l1": {
+   "lam": {
+    "low": 2,
+    "high": 0,
+    "cells": 133
+   },
+   "lr": {
+    "low": 16,
+    "high": 0,
+    "cells": 133
+   }
+  },
+  "l2": {
+   "lam": {
+    "low": 6,
+    "high": 8,
+    "cells": 133
+   },
+   "lr": {
+    "low": 6,
+    "high": 1,
+    "cells": 133
+   }
+  },
+  "lewi-v1": {
+   "lr": {
+    "low": 1,
+    "high": 0,
+    "cells": 133
+   }
+  },
+  "rigl": {
+   "density": {
+    "low": 5,
+    "high": 10,
+    "cells": 133
+   },
+   "lr": {
+    "low": 2,
+    "high": 1,
+    "cells": 133
+   }
+  }
+ },
+ "checkpoint_positions": {
+  "share_last10": 0.7404448621553885,
+  "median_frac": 0.98046875,
+  "by_task": {
+   "acrobot": {
+    "share_last10": 0.878968253968254,
+    "median_frac": 0.9921875,
+    "instances": 1008
+   },
+   "ballincup": {
+    "share_last10": 0.8263888888888888,
+    "median_frac": 0.98828125,
+    "instances": 1008
+   },
+   "cartpole": {
+    "share_last10": 0.7936507936507936,
+    "median_frac": 0.98046875,
+    "instances": 1008
+   },
+   "cheetah": {
+    "share_last10": 0.8313492063492064,
+    "median_frac": 0.98828125,
+    "instances": 1008
+   },
+   "finger": {
+    "share_last10": 0.5367063492063492,
+    "median_frac": 0.919921875,
+    "instances": 1008
+   },
+   "hopper": {
+    "share_last10": 0.6448412698412699,
+    "median_frac": 0.9765625,
+    "instances": 1008
+   },
+   "humanoid": {
+    "share_last10": 0.8670634920634921,
+    "median_frac": 0.98828125,
+    "instances": 1008
+   },
+   "manipulator": {
+    "share_last10": 0.5843253968253969,
+    "median_frac": 0.94140625,
+    "instances": 1008
+   },
+   "ogbcube": {
+    "share_last10": 0.0744047619047619,
+    "median_frac": 0.26953125,
+    "instances": 1008
+   },
+   "ogbmaze": {
+    "share_last10": 0.9662698412698413,
+    "median_frac": 0.98828125,
+    "instances": 1008
+   },
+   "pendulum": {
+    "share_last10": 0.871031746031746,
+    "median_frac": 0.98828125,
+    "instances": 1008
+   },
+   "pendulumctl": {
+    "share_last10": 0.8759920634920635,
+    "median_frac": 0.98828125,
+    "instances": 1008
+   },
+   "piecewise": {
+    "share_last10": 0.8759920634920635,
+    "median_frac": 0.98828125,
+    "instances": 1008
+   },
+   "pointmaze": {
+    "share_last10": 0.7638888888888888,
+    "median_frac": 0.9765625,
+    "instances": 1008
+   },
+   "pusht": {
+    "share_last10": 0.49206349206349204,
+    "median_frac": 0.896484375,
+    "instances": 1008
+   },
+   "quadruped": {
+    "share_last10": 0.7837301587301587,
+    "median_frac": 0.986328125,
+    "instances": 1008
+   },
+   "reacher": {
+    "share_last10": 0.8720238095238095,
+    "median_frac": 0.984375,
+    "instances": 1008
+   },
+   "tworoom": {
+    "share_last10": 0.691468253968254,
+    "median_frac": 0.95703125,
+    "instances": 1008
+   },
+   "walker": {
+    "share_last10": 0.8382936507936508,
+    "median_frac": 0.9921875,
+    "instances": 1008
+   }
+  },
+  "note": "under the cosine schedule the annealed final iterate is often the best validation checkpoint, so a position near the end does not by itself show a binding horizon; the horizon test is the audit's paired doubling of the step budget (PLAN.md sections 3 and 6)"
+ },
+ "pins": {
+  "records": 19152,
+  "off_contract": 0,
+  "missing": 0,
+  "batch": [
+   32
+  ],
+  "readout_not_structural": 0,
+  "readout_recorded": 17024,
+  "flush_denormal_trials": 1263,
+  "flush_denormal_trial_arms": [
+   "l2"
+  ],
+  "flush_denormal_winners": 67,
+  "flush_denormal_finals": 1072,
+  "flush_denormal_final_cells": 67,
+  "flush_denormal_mixed_cells": 0
+ },
+ "lewi_init": {
+  "records_with_init": 2128,
+  "min_open_edges": 86.0,
+  "max_redraws": 0.0
+ }
+}

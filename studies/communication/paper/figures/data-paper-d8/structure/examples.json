@@ -1,0 +1,42 @@
+{
+ "tree": {
+  "record": "tree__fs6013__n32768__best.json",
+  "fs": 6013,
+  "n": 32768,
+  "edge_f1": 0.6666666666666665,
+  "higher_f1": 0.5454545454545454,
+  "node_coverage": 0.7142857142857143,
+  "rank": 9,
+  "of": 16
+ },
+ "ftree": {
+  "record": "ftree__fs6000__n32768__best.json",
+  "fs": 6000,
+  "n": 32768,
+  "edge_f1": 0.5,
+  "higher_f1": 0.5714285714285714,
+  "node_coverage": 1.0,
+  "rank": 9,
+  "of": 16
+ },
+ "dag": {
+  "record": "dag__fs6003__n32768__best.json",
+  "fs": 6003,
+  "n": 32768,
+  "edge_f1": 0.8387096774193549,
+  "higher_f1": 0.6666666666666667,
+  "node_coverage": 0.8571428571428571,
+  "rank": 9,
+  "of": 16
+ },
+ "rand": {
+  "record": "rand__fs6029__n32768__best.json",
+  "fs": 6029,
+  "n": 32768,
+  "edge_f1": 0.625,
+  "higher_f1": 0.7999999999999999,
+  "node_coverage": 1.0,
+  "rank": 17,
+  "of": 32
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "dag_functional_anova:all": "b8df7b5951e8b1933b65f8b59499a8bb1b948d67aa2ed8f7461749f415ea2f60",
+ "dense_fourier:all": "24fe6588c11c5dc9bf3793cd084c771a59a7e138a9866157f7758342d9267e87",
+ "dense_fourier:go0": "24fe6588c11c5dc9bf3793cd084c771a59a7e138a9866157f7758342d9267e87",
+ "flat_functional_anova:all": "53b67823f494d2490cb28b563eda9726aa673e1ed31e93af9ce2a1c939d69880",
+ "tree_functional_anova:all": "1900b262a1bb096f94fc3c3aa04d2668ba15b40ddb0f3b8192d56d9c770a1276",
+ "tree_functional_anova:go0": "8aed44c2b4812487206da5522d76344664b38a6d3a0881734568ad827840b479",
+ "tree_functional_anova:l1": "4ddecfc702f8380460f41faa17c4cf45e47b2371334eec1069ec36e6f4a69b25"
+}

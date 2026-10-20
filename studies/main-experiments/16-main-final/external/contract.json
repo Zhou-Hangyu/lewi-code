@@ -1,0 +1,262 @@
+{
+ "frozen": true,
+ "frozen_local": "2026-09-13",
+ "width": 256,
+ "hidden": 4,
+ "max_steps": 128000,
+ "grids": {
+  "acrobot": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "ballincup": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "cartpole": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "cheetah": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "finger": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "hopper": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "ogbmaze": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "pendulum": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "pendulumctl": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "pointmaze": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "reacher": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "tworoom": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "walker": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "pusht": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "humanoid": [
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288
+  ],
+  "ogbcube": [
+   1024,
+   2048,
+   4096,
+   8192,
+   16384,
+   32768,
+   65536
+  ]
+ },
+ "ogbcube_xl": false,
+ "decision": {
+  "rule": "adopt the larger setting only if the paired mean log10 test rollout-16 ratio over cells x arms <= -0.0414 and better on a majority of cells (09 contract v2)",
+  "read_local": "2026-09-13",
+  "comparisons": {
+   "comparisons": {
+    "S0->S1": {
+     "what": "budget 128k -> 256k at 128x4",
+     "pairs": 20,
+     "mean_dlog10": 0.02302560534060882,
+     "mean": 0.02302560534060882,
+     "lo": -0.017482230373767126,
+     "hi": 0.06353344105498476,
+     "n": 20,
+     "cells": 9,
+     "cells_better": 3,
+     "adopt": false,
+     "per_cell": {
+      "cheetah/n8192/dense": 0.02031038737268631,
+      "cheetah/n8192/lewi-v1": 0.04919938805967328,
+      "cheetah/n131072/dense": -0.021421721659798276,
+      "finger/n8192/dense": 0.04293766905582541,
+      "finger/n8192/lewi-v1": -0.00692259965841339,
+      "humanoid/n8192/dense": 0.04796875812700031,
+      "ogbcube/n1024/dense": 0.22638057414277465,
+      "ogbcube/n16384/dense": -0.07171573825900202,
+      "pusht/n8192/dense": 0.0049560114220073
+     }
+    },
+    "S0->S2a": {
+     "what": "width 128 -> 256 at 128k",
+     "pairs": 33,
+     "mean_dlog10": -0.10798170988933965,
+     "mean": -0.10798170988933965,
+     "lo": -0.16350379616369703,
+     "hi": -0.052459623614982284,
+     "n": 33,
+     "cells": 12,
+     "cells_better": 12,
+     "adopt": true,
+     "per_cell": {
+      "cheetah/n8192/dense": -0.02662121962920022,
+      "cheetah/n131072/dense": -0.029893024447574135,
+      "finger/n8192/dense": -0.020515821102893086,
+      "finger/n131072/dense": -0.05621248120752012,
+      "humanoid/n8192/dense": -0.19961715491481816,
+      "humanoid/n131072/dense": -0.3083961837039002,
+      "ogbcube/n1024/dense": -0.08632841224628633,
+      "ogbcube/n1024/lewi-v1": -0.015523923420893815,
+      "ogbcube/n16384/dense": -0.31075591521446205,
+      "ogbcube/n16384/lewi-v1": -0.40657769848614617,
+      "pusht/n131072/dense": -0.023882467511717298,
+      "pusht/n131072/lewi-v1": -0.33733940529380035
+     }
+    }
+   }
+  },
+  "positions": [
+   {
+    "setting": "S0",
+    "frac_mean": 0.6908783783783784,
+    "frac_median": 0.759765625,
+    "share_last10": 0.40540540540540543,
+    "diverged": 0,
+    "wall_median_s": 826.775923371315,
+    "instances": 74
+   },
+   {
+    "setting": "S1",
+    "frac_mean": 0.52626953125,
+    "frac_median": 0.4140625,
+    "share_last10": 0.25,
+    "diverged": 0,
+    "wall_median_s": 1405.8412535190582,
+    "instances": 20
+   },
+   {
+    "setting": "S2a",
+    "frac_mean": 0.5785590277777778,
+    "frac_median": 0.615234375,
+    "share_last10": 0.3055555555555556,
+    "diverged": 0,
+    "wall_median_s": 1301.9203151464462,
+    "instances": 36
+   }
+  ],
+  "outcome": "width 128 -> 256 at 128k steps adopted (mean paired dlog10 -0.108, 95% CI -0.164 to -0.052, better on 12 of 12 cells over 33 pairs); steps 128k -> 256k at 128 x 4 not adopted (mean +0.023, CI -0.017 to +0.064, better on 3 of 9 cells over 20 pairs); the threshold -0.0414 lies outside both intervals (no marginal-band decision). The S1 -> S2b comparison (256k steps at 256 x 4) has no data: its units (40-80+ min) could not survive the compute regime below; the S0 -> S1 result at width 128 and the checkpoint positions at S2a (mean fraction 0.58, median 0.62, 31% in the last tenth, no divergence) stand for the horizon check. The audit was read before its finals completed (S0 74/80, S1 20/80, S2a 36/80 instances) because every further hour of audit packs delayed the finals by the same hour.",
+  "compute_regime": "the free tier preempts long jobs; packs of the finals run short walls; a unit starts only if its arm's reserve fits before the deadline; the 256k-step settings are not runnable this way."
+ },
+ "unit_reserve_s_at_128x4_128k": {
+  "dense": 900,
+  "lewi-v1": 1560,
+  "other arms": 1200,
+  "width_256_factor": 1.9
+ },
+ "stragglers": {
+  "amended_local": "2026-09-14",
+  "what": "the 627 L2 trial units (of 32,256) still pending at that point run under torch.set_flush_denormal(True), and the finals of a cell whose winner trial was flushed share its numerics; every such record carries flush_denormal: true; every other arm never flushes",
+  "cause": "subnormal floats in the gradients of a collapsed L2 trial (penalty strength >= 0.1): 32-62 ms per step instead of 5.4 ms, so a 128k-step unit needs about two hours and no free_qos pack survives that long",
+  "evidence": [
+   "external/analysis/subnormal_timing.csv",
+   "external/analysis/l2_trial_wall_by_lambda.csv",
+   "external/analysis/flush_check/ (paired runs of the same unit with and without the flush)"
+  ],
+  "checks": [
+   "flush-to-zero only in the L2 arm, recorded per unit",
+   "no mixed cell: a flushed winner's finals are all flushed, an unflushed winner's finals all unflushed"
+  ]
+ }
+}

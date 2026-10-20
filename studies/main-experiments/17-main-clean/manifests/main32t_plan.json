@@ -1,0 +1,255 @@
+{
+ "panel": "main32t",
+ "builds": [
+  {
+   "built_local": "2026-09-21",
+   "stage": null,
+   "cells_built": null,
+   "units": 46592,
+   "shards": 65,
+   "units_planned_total": 46592,
+   "cells": {
+    "tree5x32": {
+     "task": "tree_functional_anova",
+     "preset": "depth4",
+     "d": 32,
+     "arms": [
+      "noreg",
+      "l1",
+      "l2",
+      "l0hc",
+      "lewi-v1-rgm",
+      "rigl",
+      "bimt",
+      "fiedler",
+      "erb_positions",
+      "go1",
+      "go2",
+      "graph_oracle",
+      "support_oracle"
+     ]
+    }
+   },
+   "cohort": [
+    6000,
+    6001,
+    6002,
+    6003,
+    6004,
+    6005,
+    6006,
+    6007,
+    6008,
+    6009,
+    6010,
+    6011,
+    6012,
+    6013,
+    6014,
+    6015
+   ],
+   "cell_cohort": {},
+   "n": [
+    2048,
+    4096,
+    8192,
+    16384,
+    32768,
+    65536,
+    131072
+   ],
+   "trials_per_cell": 32,
+   "profile": {
+    "width": 64,
+    "hidden": 8,
+    "max_steps": 128000,
+    "eval_every": 2000,
+    "label": "64x8, 128,000 steps",
+    "batch": 32,
+    "schedule": "cosine to 1% of the peak",
+    "val_size": 4096,
+    "test_size": 65536,
+    "torch_threads": 1
+   },
+   "space_set": "p32t",
+   "datasets_root": "results/csfrbench/m17/datasets/n131072",
+   "spaces": {
+    "noreg": {
+     "lr": {
+      "high": 0.6000251836453144,
+      "log": true,
+      "low": 0.0011398051205154971
+     }
+    },
+    "l1": {
+     "lam": {
+      "hard": [
+       "low"
+      ],
+      "high": 145901801960.50195,
+      "log": true,
+      "low": 0.23695543440444575
+     },
+     "lr": {
+      "high": 0.4466931525509554,
+      "log": true,
+      "low": 0.00033120455174155244
+     }
+    },
+    "l2": {
+     "lam": {
+      "hard": [
+       "low"
+      ],
+      "high": 2967.6326432214823,
+      "log": true,
+      "low": 0.00010808123878052568
+     },
+     "lr": {
+      "high": 0.17500068281711753,
+      "log": true,
+      "low": 6.537095040577602e-05
+     }
+    },
+    "l0hc": {
+     "lam": {
+      "hard": [
+       "low"
+      ],
+      "high": 0.87504837638979,
+      "log": true,
+      "low": 1e-07
+     },
+     "lr": {
+      "high": 0.007054315377270762,
+      "log": true,
+      "low": 4.207804414026876e-05
+     }
+    },
+    "lewi-v1-rgm": {
+     "lr": {
+      "high": 0.12111467997856382,
+      "log": true,
+      "low": 6.447878544866457e-07
+     }
+    },
+    "rigl": {
+     "density": {
+      "hard": [
+       "high"
+      ],
+      "high": 0.45949195032130724,
+      "log": true,
+      "low": 0.024834261999691784
+     },
+     "lr": {
+      "high": 0.0031851164101948442,
+      "log": true,
+      "low": 5.168051233292449e-05
+     }
+    },
+    "bimt": {
+     "lam": {
+      "hard": [
+       "low"
+      ],
+      "high": 113.92607689479732,
+      "log": true,
+      "low": 9.482133283604007e-05
+     },
+     "lr": {
+      "high": 0.379258675057598,
+      "log": true,
+      "low": 9.49232587153126e-07
+     }
+    },
+    "fiedler": {
+     "delta": {
+      "hard": [
+       "low"
+      ],
+      "high": 4442409.0757361995,
+      "log": true,
+      "low": 1e-07
+     },
+     "lr": {
+      "high": 0.0212668846467828,
+      "log": true,
+      "low": 1.9269011797516916e-06
+     }
+    },
+    "erb_positions": {
+     "lr": {
+      "high": 3.278465141408491,
+      "log": true,
+      "low": 2.601454049133142e-07
+     }
+    },
+    "go1": {
+     "lr": {
+      "high": 0.033552219435233815,
+      "log": true,
+      "low": 0.0011539168328375301
+     }
+    },
+    "go2": {
+     "lr": {
+      "high": 0.018366142278541314,
+      "log": true,
+      "low": 0.0011032625929275968
+     }
+    },
+    "graph_oracle": {
+     "lr": {
+      "high": 0.012975381868662244,
+      "log": true,
+      "low": 0.001664419045966051
+     }
+    },
+    "support_oracle": {
+     "lr": {
+      "high": 1.0559592028539817,
+      "log": true,
+      "low": 2.143952805597437e-07
+     }
+    }
+   },
+   "arm_method": {
+    "noreg": "noreg",
+    "l1": "l1",
+    "l2": "l2",
+    "l0hc": "l0hc",
+    "lewi-v1-rgm": "lewi-v1-rgm",
+    "rigl": "rigl",
+    "bimt": "bimt",
+    "fiedler": "fiedler",
+    "erb_positions": "erb_positions",
+    "go1": "graph_oracle",
+    "go2": "graph_oracle",
+    "graph_oracle": "graph_oracle",
+    "support_oracle": "support_oracle"
+   },
+   "arm_fixed_hp": {
+    "noreg": {},
+    "l1": {},
+    "l2": {},
+    "l0hc": {},
+    "lewi-v1-rgm": {},
+    "rigl": {},
+    "bimt": {},
+    "fiedler": {},
+    "erb_positions": {},
+    "go1": {
+     "levels": 1
+    },
+    "go2": {
+     "levels": 2
+    },
+    "graph_oracle": {},
+    "support_oracle": {}
+   },
+   "trial_key": "derive(hpo.seed=20260826, 'm17', space_set, method, task, preset, n)",
+   "note": "amendment 12: the twin's depth-5 tree with 16 inert inputs - d = 32, 64x8 at 128,000 steps, 2^11..2^17, the record's 13 depth-5 arms, LeWi under rule in5, instances 6000-6015, T = 32; checkpoints retained"
+  }
+ ]
+}

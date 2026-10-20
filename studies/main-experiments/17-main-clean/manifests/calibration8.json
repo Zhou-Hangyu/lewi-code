@@ -1,0 +1,1235 @@
+{
+ "generated_local": "2026-09-16",
+ "profile": "c16k",
+ "profile_label": "32x4, 16,000 steps",
+ "max_steps": 16000,
+ "reason": "the shortest rung whose doubling gain on the reference arm at n = 2^15, pooled over the seven workloads (56 instance pairs), is below 0.01 test NMSE: 16000 -> 32000 steps gains +0.0088 [+0.0053, +0.0124]",
+ "window": [
+  128,
+  256,
+  512,
+  1024,
+  2048,
+  4096,
+  8192,
+  16384,
+  32768
+ ],
+ "ladder": [
+  {
+   "step": "8000 -> 16000",
+   "lo": "c8k",
+   "hi": "c16k",
+   "reference": {
+    "pooled": {
+     "mean": 0.012070616884895425,
+     "ci95_lo": 0.00707100311552479,
+     "ci95_hi": 0.01707023065426606,
+     "sd": 0.018669085588476398,
+     "n_instances": 56,
+     "median": 0.005896041844577041,
+     "n_negative": 0,
+     "n_positive": 56
+    },
+    "per_workload": [
+     {
+      "cell": "dag8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.008607887431561281,
+      "gain_lo": 0.005771878505216633,
+      "gain_hi": 0.011443896357905929,
+      "limited": false
+     },
+     {
+      "cell": "tree8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.05212750552904645,
+      "gain_lo": 0.035339067860311574,
+      "gain_hi": 0.06891594319778133,
+      "limited": true
+     },
+     {
+      "cell": "rand8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.013298160939663552,
+      "gain_lo": 0.008101887813770376,
+      "gain_hi": 0.018494434065556727,
+      "limited": false
+     },
+     {
+      "cell": "ftree8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.0026541265577117237,
+      "gain_lo": 0.0013931577670815438,
+      "gain_hi": 0.0039150953483419034,
+      "limited": false
+     },
+     {
+      "cell": "flat8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.00069882356634545,
+      "gain_lo": 0.00041750005021275703,
+      "gain_hi": 0.000980147082478143,
+      "limited": false
+     },
+     {
+      "cell": "fdag8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.0009246313853863884,
+      "gain_lo": 0.0006735072038655148,
+      "gain_hi": 0.001175755566907262,
+      "limited": false
+     },
+     {
+      "cell": "dense8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.006183182784553136,
+      "gain_lo": 0.004813790839570493,
+      "gain_hi": 0.007552574729535778,
+      "limited": false
+     }
+    ]
+   },
+   "dense": {
+    "pooled": {
+     "mean": 0.03121873035617817,
+     "ci95_lo": 0.019923850926272014,
+     "ci95_hi": 0.04251360978608433,
+     "sd": 0.04217627211131227,
+     "n_instances": 56,
+     "median": 0.008828639969862353,
+     "n_negative": 1,
+     "n_positive": 55
+    },
+    "per_workload": [
+     {
+      "cell": "dag8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.05288014711766237,
+      "gain_lo": 0.03855237174710415,
+      "gain_hi": 0.06720792248822058,
+      "limited": true
+     },
+     {
+      "cell": "tree8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.11931115176860643,
+      "gain_lo": 0.09448424991732855,
+      "gain_hi": 0.1441380536198843,
+      "limited": true
+     },
+     {
+      "cell": "rand8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.027984542462686772,
+      "gain_lo": 0.01939355595501092,
+      "gain_hi": 0.03657552897036262,
+      "limited": true
+     },
+     {
+      "cell": "ftree8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.00610690837803818,
+      "gain_lo": 0.002654679235923231,
+      "gain_hi": 0.00955913752015313,
+      "limited": false
+     },
+     {
+      "cell": "flat8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.0021589353086640256,
+      "gain_lo": 0.001500498192701769,
+      "gain_hi": 0.0028173724246262823,
+      "limited": false
+     },
+     {
+      "cell": "fdag8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.0039062446730362744,
+      "gain_lo": 0.00238972543551261,
+      "gain_hi": 0.005422763910559939,
+      "limited": false
+     },
+     {
+      "cell": "dense8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.006183182784553136,
+      "gain_lo": 0.004813790839570493,
+      "gain_hi": 0.007552574729535778,
+      "limited": false
+     }
+    ]
+   },
+   "immaterial": false
+  },
+  {
+   "step": "16000 -> 32000",
+   "lo": "c16k",
+   "hi": "c32k",
+   "reference": {
+    "pooled": {
+     "mean": 0.008823828131218814,
+     "ci95_lo": 0.005250528124022191,
+     "ci95_hi": 0.012397128138415437,
+     "sd": 0.013343079434724965,
+     "n_instances": 56,
+     "median": 0.0025530551912113964,
+     "n_negative": 0,
+     "n_positive": 56
+    },
+    "per_workload": [
+     {
+      "cell": "dag8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.00577830440658258,
+      "gain_lo": 0.003439301853650612,
+      "gain_hi": 0.008117306959514547,
+      "limited": false
+     },
+     {
+      "cell": "tree8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.03727680949068634,
+      "gain_lo": 0.03164114672112271,
+      "gain_hi": 0.04291247226024997,
+      "limited": true
+     },
+     {
+      "cell": "rand8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.013122999961412272,
+      "gain_lo": 0.0037928081265610654,
+      "gain_hi": 0.02245319179626348,
+      "limited": false
+     },
+     {
+      "cell": "ftree8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.00137693891175915,
+      "gain_lo": 0.0006750124226009419,
+      "gain_hi": 0.0020788654009173584,
+      "limited": false
+     },
+     {
+      "cell": "flat8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.00037139399303863594,
+      "gain_lo": 0.00014020653731312605,
+      "gain_hi": 0.0006025814487641459,
+      "limited": false
+     },
+     {
+      "cell": "fdag8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.0004225535444197985,
+      "gain_lo": 0.00030178121632831587,
+      "gain_hi": 0.0005433258725112811,
+      "limited": false
+     },
+     {
+      "cell": "dense8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.0034177966106329113,
+      "gain_lo": 0.0017036980246970899,
+      "gain_hi": 0.005131895196568733,
+      "limited": false
+     }
+    ]
+   },
+   "dense": {
+    "pooled": {
+     "mean": 0.018314792596566654,
+     "ci95_lo": 0.011243455822444393,
+     "ci95_hi": 0.025386129370688914,
+     "sd": 0.026405117985273396,
+     "n_instances": 56,
+     "median": 0.004501702991149413,
+     "n_negative": 0,
+     "n_positive": 56
+    },
+    "per_workload": [
+     {
+      "cell": "dag8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.03109502230515899,
+      "gain_lo": 0.017534243462800303,
+      "gain_hi": 0.044655801147517674,
+      "limited": true
+     },
+     {
+      "cell": "tree8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.06470702302442144,
+      "gain_lo": 0.03426314758760112,
+      "gain_hi": 0.09515089846124175,
+      "limited": true
+     },
+     {
+      "cell": "rand8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.020901441134853267,
+      "gain_lo": 0.011575664548087833,
+      "gain_hi": 0.030227217721618703,
+      "limited": true
+     },
+     {
+      "cell": "ftree8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.004525776765425456,
+      "gain_lo": 0.0020095949449568835,
+      "gain_hi": 0.007041958585894029,
+      "limited": false
+     },
+     {
+      "cell": "flat8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.001348907738404369,
+      "gain_lo": 0.0010232790288550193,
+      "gain_hi": 0.0016745364479537187,
+      "limited": false
+     },
+     {
+      "cell": "fdag8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.0022075805970701375,
+      "gain_lo": 0.0014555382416525187,
+      "gain_hi": 0.0029596229524877565,
+      "limited": false
+     },
+     {
+      "cell": "dense8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.0034177966106329113,
+      "gain_lo": 0.0017036980246970899,
+      "gain_hi": 0.005131895196568733,
+      "limited": false
+     }
+    ]
+   },
+   "immaterial": true
+  },
+  {
+   "step": "32000 -> 64000",
+   "lo": "c32k",
+   "hi": "c64k",
+   "reference": {
+    "pooled": {
+     "mean": 0.005834273345292872,
+     "ci95_lo": 0.002347702883040702,
+     "ci95_hi": 0.009320843807545042,
+     "sd": 0.013019222158481517,
+     "n_instances": 56,
+     "median": 0.0014458792162411168,
+     "n_negative": 0,
+     "n_positive": 56
+    },
+    "per_workload": [
+     {
+      "cell": "dag8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.0037419446342999182,
+      "gain_lo": 0.002170261840167373,
+      "gain_hi": 0.005313627428432464,
+      "limited": false
+     },
+     {
+      "cell": "tree8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.027799177301401058,
+      "gain_lo": 0.0066129653311947575,
+      "gain_hi": 0.04898538927160736,
+      "limited": true
+     },
+     {
+      "cell": "rand8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.005576537826738403,
+      "gain_lo": 0.002432058343827323,
+      "gain_hi": 0.008721017309649482,
+      "limited": false
+     },
+     {
+      "cell": "ftree8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.0006652394747374351,
+      "gain_lo": 0.0003475589489304268,
+      "gain_hi": 0.0009829200005444434,
+      "limited": false
+     },
+     {
+      "cell": "flat8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.00016346312195081016,
+      "gain_lo": 7.67968495330281e-05,
+      "gain_hi": 0.00025012939436859223,
+      "limited": false
+     },
+     {
+      "cell": "fdag8",
+      "arm": "graph_oracle",
+      "paper_name": "GO(all)",
+      "pairs": 8,
+      "gain_mean": 0.00046504160433246614,
+      "gain_lo": 0.0002241062442403378,
+      "gain_hi": 0.0007059769644245945,
+      "limited": false
+     },
+     {
+      "cell": "dense8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.002428509453590014,
+      "gain_lo": 0.0013338096983122262,
+      "gain_hi": 0.003523209208867802,
+      "limited": false
+     }
+    ]
+   },
+   "dense": {
+    "pooled": {
+     "mean": 0.009575300284100296,
+     "ci95_lo": 0.005492404117117954,
+     "ci95_hi": 0.013658196451082637,
+     "sd": 0.015245965289804942,
+     "n_instances": 56,
+     "median": 0.0024406594843916093,
+     "n_negative": 0,
+     "n_positive": 56
+    },
+    "per_workload": [
+     {
+      "cell": "dag8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.018572878294151315,
+      "gain_lo": 0.008561484040012826,
+      "gain_hi": 0.028584272548289803,
+      "limited": false
+     },
+     {
+      "cell": "tree8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.03330681269725293,
+      "gain_lo": 0.012728878455228264,
+      "gain_hi": 0.05388474693927759,
+      "limited": true
+     },
+     {
+      "cell": "rand8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.009408284850516663,
+      "gain_lo": 0.004616329415303352,
+      "gain_hi": 0.014200240285729974,
+      "limited": false
+     },
+     {
+      "cell": "ftree8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.001428353277724153,
+      "gain_lo": 0.0005674564742610016,
+      "gain_hi": 0.0022892500811873043,
+      "limited": false
+     },
+     {
+      "cell": "flat8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.0006523594589654104,
+      "gain_lo": 0.00038854856669357055,
+      "gain_hi": 0.0009161703512372502,
+      "limited": false
+     },
+     {
+      "cell": "fdag8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.0012299039565015753,
+      "gain_lo": 0.0007609813159857587,
+      "gain_hi": 0.0016988265970173918,
+      "limited": false
+     },
+     {
+      "cell": "dense8",
+      "arm": "noreg",
+      "paper_name": "Dense",
+      "pairs": 8,
+      "gain_mean": 0.002428509453590014,
+      "gain_lo": 0.0013338096983122262,
+      "gain_hi": 0.003523209208867802,
+      "limited": false
+     }
+    ]
+   },
+   "immaterial": true
+  }
+ ],
+ "checks": [
+  {
+   "profile": "c8k",
+   "cell": "dag8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.02849637387730639,
+   "test_at_bottom": 0.76230321226925,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c8k",
+   "cell": "dag8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.1240622612821877,
+   "test_at_bottom": 0.9449744960400762,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c8k",
+   "cell": "tree8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.1903274851427864,
+   "test_at_bottom": 0.9785778106705315,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c8k",
+   "cell": "tree8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.3949213695495609,
+   "test_at_bottom": 0.9898474369571358,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c8k",
+   "cell": "rand8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.05326187195999908,
+   "test_at_bottom": 0.4074898274599874,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c8k",
+   "cell": "rand8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.077456406960478,
+   "test_at_bottom": 0.6340774301179891,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c8k",
+   "cell": "ftree8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.007331516765023343,
+   "test_at_bottom": 0.2978830262210355,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c8k",
+   "cell": "ftree8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.016731648252618317,
+   "test_at_bottom": 0.4863270620069732,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c8k",
+   "cell": "flat8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.0019425616788600324,
+   "test_at_bottom": 0.06086320981255203,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c8k",
+   "cell": "flat8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.006654880606768268,
+   "test_at_bottom": 0.4562077007910794,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c8k",
+   "cell": "fdag8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.0032521438178554052,
+   "test_at_bottom": 0.1981651495337353,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c8k",
+   "cell": "fdag8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.010658293300964036,
+   "test_at_bottom": 0.4192604563847332,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c8k",
+   "cell": "dense8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.02497537484341452,
+   "test_at_bottom": 0.4449352399535745,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c16k",
+   "cell": "dag8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.019334349010204425,
+   "test_at_bottom": 0.7660036071553978,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c16k",
+   "cell": "dag8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.07262584300760713,
+   "test_at_bottom": 0.9516465941214778,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c16k",
+   "cell": "tree8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.13918713054292545,
+   "test_at_bottom": 0.9955170246090017,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c16k",
+   "cell": "tree8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.26725682408299484,
+   "test_at_bottom": 0.9922343409256911,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c16k",
+   "cell": "rand8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.04006858710595797,
+   "test_at_bottom": 0.42946358515469263,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c16k",
+   "cell": "rand8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.04965343145758157,
+   "test_at_bottom": 0.6270761558075988,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c16k",
+   "cell": "ftree8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.004936656739302201,
+   "test_at_bottom": 0.2830755538802024,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c16k",
+   "cell": "ftree8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.0106228964056644,
+   "test_at_bottom": 0.48084074794033016,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c16k",
+   "cell": "flat8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.0012767781249249691,
+   "test_at_bottom": 0.05768650140638411,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c16k",
+   "cell": "flat8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.004536436509477341,
+   "test_at_bottom": 0.4428565589636008,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c16k",
+   "cell": "fdag8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.002351993071885302,
+   "test_at_bottom": 0.19209527639926624,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c16k",
+   "cell": "fdag8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.007129982598954723,
+   "test_at_bottom": 0.41631812549183395,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c16k",
+   "cell": "dense8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.018897826382214673,
+   "test_at_bottom": 0.43835832613091186,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c32k",
+   "cell": "dag8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.01402205759302772,
+   "test_at_bottom": 0.7375322952516808,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c32k",
+   "cell": "dag8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.04378002184719486,
+   "test_at_bottom": 0.9565684178630884,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c32k",
+   "cell": "tree8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.09950451468307055,
+   "test_at_bottom": 0.9969656637739047,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c32k",
+   "cell": "tree8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.19984373755586693,
+   "test_at_bottom": 0.9855733754123972,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c32k",
+   "cell": "rand8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.02939032373947609,
+   "test_at_bottom": 0.41214354917221896,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c32k",
+   "cell": "rand8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.030858695186163396,
+   "test_at_bottom": 0.6298782263550736,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c32k",
+   "cell": "ftree8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.0037151275248627088,
+   "test_at_bottom": 0.28715067413061435,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c32k",
+   "cell": "ftree8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.006749974616792954,
+   "test_at_bottom": 0.49873677971440644,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c32k",
+   "cell": "flat8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.0009425089085575188,
+   "test_at_bottom": 0.05836397436787278,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c32k",
+   "cell": "flat8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.0032044362119656314,
+   "test_at_bottom": 0.4467982009932486,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c32k",
+   "cell": "fdag8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.00193683161269082,
+   "test_at_bottom": 0.19436259759166663,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c32k",
+   "cell": "fdag8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.005028346536630514,
+   "test_at_bottom": 0.41244060004457544,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c32k",
+   "cell": "dense8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.015794615031320288,
+   "test_at_bottom": 0.4334646481188167,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c64k",
+   "cell": "dag8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.010582198387120942,
+   "test_at_bottom": 0.7368627800761874,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c64k",
+   "cell": "dag8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.026651969199823912,
+   "test_at_bottom": 0.962246708798524,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c64k",
+   "cell": "tree8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.07688778321017206,
+   "test_at_bottom": 0.9842778821078321,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c64k",
+   "cell": "tree8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.15610751918031596,
+   "test_at_bottom": 0.9944395532982457,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c64k",
+   "cell": "rand8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.023522006463841914,
+   "test_at_bottom": 0.41385898540800237,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c64k",
+   "cell": "rand8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.022021911667770996,
+   "test_at_bottom": 0.6284949212240877,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c64k",
+   "cell": "ftree8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.003094098866767122,
+   "test_at_bottom": 0.2978078573713065,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c64k",
+   "cell": "ftree8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.005513224405553534,
+   "test_at_bottom": 0.5209534153495482,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": true
+  },
+  {
+   "profile": "c64k",
+   "cell": "flat8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.0007862974366883451,
+   "test_at_bottom": 0.058829583528822185,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c64k",
+   "cell": "flat8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.002578382530947146,
+   "test_at_bottom": 0.46302313139532436,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c64k",
+   "cell": "fdag8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "instances": 8,
+   "test_at_top": 0.0015313663291955932,
+   "test_at_bottom": 0.19510455692012246,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": null
+  },
+  {
+   "profile": "c64k",
+   "cell": "fdag8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.0038574962651541675,
+   "test_at_bottom": 0.4178842162642348,
+   "reference": false,
+   "realized": null,
+   "grid_spans_transition": false
+  },
+  {
+   "profile": "c64k",
+   "cell": "dense8",
+   "arm": "noreg",
+   "paper_name": "Dense",
+   "instances": 8,
+   "test_at_top": 0.013498607407421937,
+   "test_at_bottom": 0.4405284732415241,
+   "reference": true,
+   "realized": true,
+   "grid_spans_transition": false
+  }
+ ],
+ "thresholds": {
+  "realized_below": 0.5,
+  "floor_at_bottom": 0.5,
+  "material_gain": 0.01,
+  "limited_gain": 0.02
+ },
+ "budget_limited_at_choice": [
+  {
+   "cell": "tree8",
+   "arm": "graph_oracle",
+   "paper_name": "GO(all)",
+   "pairs": 8,
+   "gain_mean": 0.03727680949068634,
+   "gain_lo": 0.03164114672112271,
+   "gain_hi": 0.04291247226024997,
+   "limited": true
+  }
+ ],
+ "cohort": [
+  6090,
+  6091,
+  6092,
+  6093,
+  6094,
+  6095,
+  6096,
+  6097
+ ],
+ "complete_reference_instances": {
+  "c8k": {
+   "dag8": 8,
+   "tree8": 8,
+   "rand8": 8,
+   "ftree8": 8,
+   "flat8": 8,
+   "fdag8": 8,
+   "dense8": 8
+  },
+  "c16k": {
+   "dag8": 8,
+   "tree8": 8,
+   "rand8": 8,
+   "ftree8": 8,
+   "flat8": 8,
+   "fdag8": 8,
+   "dense8": 8
+  },
+  "c32k": {
+   "dag8": 8,
+   "tree8": 8,
+   "rand8": 8,
+   "ftree8": 8,
+   "flat8": 8,
+   "fdag8": 8,
+   "dense8": 8
+  },
+  "c64k": {
+   "dag8": 8,
+   "tree8": 8,
+   "rand8": 8,
+   "ftree8": 8,
+   "flat8": 8,
+   "fdag8": 8,
+   "dense8": 8
+  }
+ },
+ "rule": "CSFRBench amendment 6 / 9: the reference arms (GO(all); Dense on the dense node) choose the budget at the top of the grid on paired doubling gains of the validation-selected winner's test NMSE; the learned arms never do; the shortest rung whose pooled gain is below the material threshold wins; if none, the top rung"
+}

@@ -1,0 +1,332 @@
+{
+ "panel": "main8b",
+ "builds": [
+  {
+   "built_local": "2026-09-16",
+   "stage": null,
+   "cells_built": null,
+   "units": 240128,
+   "shards": 334,
+   "units_planned_total": 240128,
+   "cells": {
+    "dag8": {
+     "task": "dag_functional_anova",
+     "preset": "default",
+     "d": 8,
+     "arms": [
+      "noreg",
+      "l1",
+      "l2",
+      "l0hc",
+      "lewi-v1-rgm",
+      "rigl",
+      "bimt",
+      "fiedler",
+      "go1",
+      "graph_oracle"
+     ]
+    },
+    "tree8": {
+     "task": "tree_functional_anova",
+     "preset": "depth3",
+     "d": 8,
+     "arms": [
+      "noreg",
+      "l1",
+      "l2",
+      "l0hc",
+      "lewi-v1-rgm",
+      "rigl",
+      "bimt",
+      "fiedler",
+      "go1",
+      "graph_oracle"
+     ]
+    },
+    "rand8": {
+     "task": "rand_functional_anova",
+     "preset": "default",
+     "d": 8,
+     "arms": [
+      "noreg",
+      "l1",
+      "l2",
+      "l0hc",
+      "lewi-v1-rgm",
+      "rigl",
+      "bimt",
+      "fiedler",
+      "go1",
+      "go2",
+      "graph_oracle"
+     ]
+    },
+    "ftree8": {
+     "task": "tree_fourier",
+     "preset": "binary_depth3",
+     "d": 8,
+     "arms": [
+      "noreg",
+      "l1",
+      "l2",
+      "l0hc",
+      "lewi-v1-rgm",
+      "rigl",
+      "bimt",
+      "fiedler",
+      "go1",
+      "graph_oracle"
+     ]
+    },
+    "flat8": {
+     "task": "flat_functional_anova",
+     "preset": "w4",
+     "d": 8,
+     "arms": [
+      "noreg",
+      "l1",
+      "l2",
+      "l0hc",
+      "lewi-v1-rgm",
+      "rigl",
+      "bimt",
+      "fiedler",
+      "graph_oracle"
+     ]
+    },
+    "fdag8": {
+     "task": "dag_fourier_v2",
+     "preset": "default",
+     "d": 8,
+     "arms": [
+      "noreg",
+      "l1",
+      "l2",
+      "l0hc",
+      "lewi-v1-rgm",
+      "rigl",
+      "bimt",
+      "fiedler",
+      "graph_oracle"
+     ]
+    },
+    "dense8": {
+     "task": "dense_fourier",
+     "preset": "frozen_v1",
+     "d": 8,
+     "arms": [
+      "noreg",
+      "l1",
+      "l2",
+      "l0hc",
+      "lewi-v1-rgm",
+      "rigl",
+      "bimt",
+      "fiedler"
+     ]
+    }
+   },
+   "cohort": [
+    6000,
+    6001,
+    6002,
+    6003,
+    6004,
+    6005,
+    6006,
+    6007,
+    6008,
+    6009,
+    6010,
+    6011,
+    6012,
+    6013,
+    6014,
+    6015
+   ],
+   "n": [
+    512,
+    1024,
+    2048,
+    4096,
+    8192,
+    16384,
+    32768
+   ],
+   "trials_per_cell": 32,
+   "profile": {
+    "width": 32,
+    "hidden": 4,
+    "max_steps": 64000,
+    "eval_every": 1000,
+    "label": "32x4, 64,000 steps",
+    "batch": 32,
+    "schedule": "cosine to 1% of the peak",
+    "val_size": 4096,
+    "test_size": 65536,
+    "torch_threads": 1
+   },
+   "space_set": "p8b",
+   "datasets_root": "results/csfrbench/m17/datasets/n32768",
+   "spaces": {
+    "noreg": {
+     "lr": {
+      "high": 0.26127520187388814,
+      "log": true,
+      "low": 0.0014286020556206363
+     }
+    },
+    "l1": {
+     "lam": {
+      "hard": [
+       "low"
+      ],
+      "high": 670.0942668610218,
+      "log": true,
+      "low": 1e-07
+     },
+     "lr": {
+      "high": 0.3488578969539611,
+      "log": true,
+      "low": 1.5668635782753878e-06
+     }
+    },
+    "l2": {
+     "lam": {
+      "hard": [
+       "low"
+      ],
+      "high": 1132.2800145398287,
+      "log": true,
+      "low": 1e-07
+     },
+     "lr": {
+      "high": 0.6478850947431244,
+      "log": true,
+      "low": 2.1563805281680114e-05
+     }
+    },
+    "l0hc": {
+     "lam": {
+      "hard": [
+       "low"
+      ],
+      "high": 156.89124581631535,
+      "log": true,
+      "low": 1e-07
+     },
+     "lr": {
+      "high": 0.04434246315069375,
+      "log": true,
+      "low": 0.0002667342344395715
+     }
+    },
+    "lewi-v1-rgm": {
+     "lr": {
+      "high": 0.09985334208657776,
+      "log": true,
+      "low": 4.582555061258164e-06
+     }
+    },
+    "rigl": {
+     "density": {
+      "hard": [
+       "high"
+      ],
+      "high": 1.0,
+      "log": true,
+      "low": 0.030881674428072763
+     },
+     "lr": {
+      "high": 0.2343396212555864,
+      "log": true,
+      "low": 1.0097682124797105e-05
+     }
+    },
+    "bimt": {
+     "lam": {
+      "hard": [
+       "low"
+      ],
+      "high": 0.45261902342698535,
+      "log": true,
+      "low": 1e-07
+     },
+     "lr": {
+      "high": 0.12530075560852016,
+      "log": true,
+      "low": 1.1830059528763851e-05
+     }
+    },
+    "fiedler": {
+     "delta": {
+      "hard": [
+       "low"
+      ],
+      "high": 282866320.30504197,
+      "log": true,
+      "low": 1e-07
+     },
+     "lr": {
+      "high": 0.26829615942868124,
+      "log": true,
+      "low": 3.474919809755104e-05
+     }
+    },
+    "go1": {
+     "lr": {
+      "high": 0.14893622495564038,
+      "log": true,
+      "low": 0.0016120748900276631
+     }
+    },
+    "graph_oracle": {
+     "lr": {
+      "high": 0.07988636531725946,
+      "log": true,
+      "low": 0.0020016814480336444
+     }
+    },
+    "go2": {
+     "lr": {
+      "high": 0.07988636531725946,
+      "log": true,
+      "low": 0.0020016814480336444
+     }
+    }
+   },
+   "arm_method": {
+    "noreg": "noreg",
+    "l1": "l1",
+    "l2": "l2",
+    "l0hc": "l0hc",
+    "lewi-v1-rgm": "lewi-v1-rgm",
+    "rigl": "rigl",
+    "bimt": "bimt",
+    "fiedler": "fiedler",
+    "go1": "graph_oracle",
+    "graph_oracle": "graph_oracle",
+    "go2": "graph_oracle"
+   },
+   "arm_fixed_hp": {
+    "noreg": {},
+    "l1": {},
+    "l2": {},
+    "l0hc": {},
+    "lewi-v1-rgm": {},
+    "rigl": {},
+    "bimt": {},
+    "fiedler": {},
+    "go1": {
+     "levels": 1
+    },
+    "graph_oracle": {},
+    "go2": {
+     "levels": 2
+    }
+   },
+   "trial_key": "derive(hpo.seed=20260826, 'm17', space_set, method, task, preset, n)",
+   "note": "amendment 7: the 8-input suite at 64,000 steps - seven workloads at d = 8, 32x4, n = 2^9..2^15, the record's roster without GO(0), input L0 and neuron positions, instances 6000-6015, T = 32; init.pt and best.pt retained for the post-hoc readouts"
+  }
+ ]
+}

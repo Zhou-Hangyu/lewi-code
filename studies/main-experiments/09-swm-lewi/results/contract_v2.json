@@ -1,0 +1,32 @@
+{
+ "name": "v2 (A12, standard-practice scale)",
+ "width": 128,
+ "hidden": 4,
+ "max_steps": 128000,
+ "batch_size": 32,
+ "eval_every": 500,
+ "corpus": "xl (8192 episodes x 128 steps = 2^20 transitions)",
+ "rule": "adopt the larger setting only if paired mean log10 score ratio <= -0.0414 and better on a majority of development cells; one axis at a time, from the smaller setting up",
+ "evidence": {
+  "width_128_to_256_at_32k": {
+   "cells": 8,
+   "mean_dlog10": -0.0205,
+   "wins": 6,
+   "adopt": false
+  },
+  "steps_32000_to_64000_at_w128": {
+   "cells": 8,
+   "mean_dlog10": -0.088,
+   "wins": 7,
+   "adopt": true
+  },
+  "steps_64000_to_128000_at_w128": {
+   "cells": 8,
+   "mean_dlog10": -0.0585,
+   "wins": 6,
+   "adopt": true
+  }
+ },
+ "best_step_fraction_in_last_10pct": 0.75,
+ "n_cells": 8
+}
