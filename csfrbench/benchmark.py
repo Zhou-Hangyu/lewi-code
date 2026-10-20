@@ -6,11 +6,11 @@ the task; :meth:`Task.reveal` returns them for structural diagnostics after trai
 
     import csfrbench
 
-    task = csfrbench.task("depth4_tree", instance=6000, n=1024)
+    task = csfrbench.task("depth4_tree", instance=6016, n=1024)                # a development instance
     predict = my_fit(task.X_train, task.y_train, task.X_val, task.y_val)       # any learner, any framework
     print(task.evaluate(predict))       # test NMSE on 65,536 noise-free inputs, as reported in the paper
 
-    curve = csfrbench.learning_curve(my_fit, "depth4_tree", instance=6000)    # n = 2^9 ... 2^15
+    curve = csfrbench.learning_curve(my_fit, "depth4_tree", instance=6000)    # an evaluation instance, once
     print(curve)                                                              # NMSE per n and the AULC
     csfrbench.compare([curve])          # AULC beside the paper's methods on the same target instances
 
@@ -18,6 +18,9 @@ The examples, the test pool and the NMSE are those of the paper's runs: the trai
 ``n`` rows of the instance's training pool, and the test NMSE is the squared error summed over the test pool divided
 by the summed squared deviation of the noise-free target from its mean. A learning curve covers the workload's grid
 of training-set sizes, so its AULC is directly comparable with the recorded AULC of every method.
+
+Tune a learner on the development instances 6016-6019 (the default of :func:`task`). The evaluation instances
+6000-6015 (and 6020-6035 of the sampled DAGs) give the numbers to report: run them once, with the final learner.
 
 This is the quick, exploratory interface: it fixes the data and the metric, not the learner's protocol. The paper's
 protocol (a search space frozen on the development instances 6016-6019, 32 configurations per instance and size,
@@ -140,8 +143,12 @@ class Task:
         return self._target
 
 
-def task(workload: str, instance: int = suite.INSTANCES[0], n: int = 1024, *, setting: str = "primary") -> Task:
-    """The task of a workload, a target instance and a training-set size (see :class:`Task`)."""
+def task(workload: str, instance: int = suite.DEVELOPMENT_INSTANCES[0], n: int = 1024, *,
+         setting: str = "primary") -> Task:
+    """The task of a workload, a target instance and a training-set size (see :class:`Task`).
+
+    The default instance is a development instance: tune there, and keep the evaluation instances for the result.
+    """
     return Task(workload, instance, n, setting=setting)
 
 
@@ -175,7 +182,8 @@ def learning_curve(fit: Fit, workload: str, instance: int = suite.INSTANCES[0], 
     """Fit a learner at every training-set size of a workload's grid and score it on the test pool.
 
     ``fit(X_train, y_train, X_val, y_val)`` returns a predictor (see :data:`Predictor`). By default the sizes are the
-    workload's grid (``n = 2^9 ... 2^15``; ``2^11 ... 2^17`` on the depth-5 tree), the grid of the recorded AULC.
+    workload's grid (``n = 2^9 ... 2^15``; ``2^11 ... 2^17`` on the depth-5 tree), the grid of the recorded AULC, and
+    the instance is the first evaluation instance, whose records :func:`compare` uses: run it with a final learner.
     """
     w = suite.workload(setting, workload)
     nmse = {}

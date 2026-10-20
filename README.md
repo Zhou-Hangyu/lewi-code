@@ -33,22 +33,37 @@ same training runs more slowly. `pip install -e ".[plot]"` adds matplotlib for t
 ## Benchmark your model in five minutes
 
 A task gives your learner the training and validation examples of one target. The computation graph stays hidden;
-the score is the test NMSE of the paper, on 65,536 noise-free inputs.
+the score is the test NMSE of the paper, on 65,536 noise-free inputs. This example runs as it stands:
 
 ```python
-import csfrbench
+import csfrbench, torch
 
-task = csfrbench.task("depth4_tree", instance=6000, n=1024)
+def my_fit(X, y, X_val, y_val):              # any learner: torch, scikit-learn, a plain function ...
+    X, y = torch.tensor(X), torch.tensor(y)
+    net = torch.nn.Sequential(torch.nn.Linear(X.shape[1], 64), torch.nn.ReLU(),
+                              torch.nn.Linear(64, 1), torch.nn.Flatten(0))
+    opt = torch.optim.Adam(net.parameters(), 3e-3)
+    for _ in range(2000):
+        i = torch.randint(len(y), (32,))
+        loss = ((net(X[i]) - y[i]) ** 2).mean()
+        opt.zero_grad(); loss.backward(); opt.step()
+    return net
+
+task = csfrbench.task("depth4_tree", instance=6016, n=1024)       # a development instance: tune here
 print(task)                                   # d = 8 inputs, 1,024 noisy training examples, 4,096 validation examples
-
-model = my_fit(task.X_train, task.y_train, task.X_val, task.y_val)    # any learner: torch, sklearn, a function ...
+model = my_fit(task.X_train, task.y_train, task.X_val, task.y_val)
 print(task.evaluate(model))                   # test NMSE
 
-curve = csfrbench.learning_curve(my_fit, "depth4_tree", instance=6000)   # n = 2^9 ... 2^15
+curve = csfrbench.learning_curve(my_fit, "depth4_tree", instance=6000)   # an evaluation instance: once, at the end
 csfrbench.compare([curve])                    # your AULC beside LeWi, Dense and the other methods of the paper
 ```
 
-`python examples/quickstart.py` runs this with a small PyTorch MLP (under a minute on one CPU core).
+Tune a learner on the development instances 6016-6019 and report on the evaluation instances 6000-6015 (and 6020-6035
+of the sampled DAGs). The graph is hidden by protocol, not by access control: `task.reveal()` works at any time, and a
+learner that reads the graph, the active inputs or the intermediate values while training breaks the protocol. The
+quick interface fixes the data and the metric, not the training budget or the search, so its numbers are exploratory;
+[`csfrbench/README.md`](csfrbench/README.md#reporting-a-result) says how to report a result.
+`python examples/quickstart.py` runs the whole sequence (under a minute on one CPU core).
 [`csfrbench/README.md`](csfrbench/README.md) describes the benchmark: the graph families, the local functions, the
 data splits, the metrics, the official evaluation protocol and the API.
 
@@ -58,14 +73,18 @@ data splits, the metrics, the official evaluation protocol and the API.
 import torch
 from lewi import LeWiMLP
 
+x = torch.rand(4096, 8) * 2 - 1                                  # your data: here a target that uses 4 of 8 inputs
+y = torch.sin(3 * x[:, 0]) * x[:, 1] + x[:, 2] * x[:, 3]
 model = LeWiMLP(in_features=8, width=32, depth=4)                 # every layer, the readout included, is a LeWi layer
 optimizer = torch.optim.Adam(model.parameters(), lr=3e-3)        # weights and neuron positions together
-for x, y in loader:
-    loss = torch.nn.functional.mse_loss(model(x).squeeze(-1), y)
+for step in range(2000):
+    i = torch.randint(len(x), (32,))
+    loss = torch.nn.functional.mse_loss(model(x[i]).squeeze(-1), y[i])
     optimizer.zero_grad()
     loss.backward()
     optimizer.step()
     model.update_masks()                                         # connections open and close as neurons move
+print(model.connection_density()["density_overall"])             # the fraction of connections still open
 ```
 
 [`lewi/README.md`](lewi/README.md) gives the rule, the constants, and the building blocks for other architectures.
@@ -85,9 +104,18 @@ of many networks with LeWi's fused C++ kernels: the same protocol and seeds as t
 faster per core, with trials, winners and learning curves that agree with the records statistically, not digit by digit.
 `--engine exact` trains every network alone and reproduces a record bit for bit in the records' environment
 (`requirements-reference.txt`). [`docs/REPRODUCE.md`](docs/REPRODUCE.md) maps every figure and table of the paper to
-its command, its records and its compute. The research code as it produced the paper, with the world-model experiments
-and the studies outside the benchmark, is on the [`paper-code`](https://github.com/Zhou-Hangyu/lewi-code/tree/paper-code)
-branch.
+its command, its records and its compute.
+
+### Original experiment code
+
+The [`paper-code`](https://github.com/Zhou-Hangyu/lewi-code/tree/paper-code) branch holds the research code as it
+produced the paper, with its own reproduction map: the world-model experiments (Section 6 and Appendix E), the mechanism
+ablations, the sensitivity studies, the wiring alignment and the local-function study. Use `main` for new work: the
+same benchmark and records with a cleaner interface. For the world models, start at that branch's README, section
+[A world-model experiment](https://github.com/Zhou-Hangyu/lewi-code/tree/paper-code#a-world-model-experiment): the
+figures and tables rebuild from the packaged records in minutes, while running the campaign again takes about 34,000
+search runs and 2,448 final runs of 5 to 40 minutes each, in a second environment with the simulators
+(`requirements-worldmodel.txt`).
 
 ## Layout
 
@@ -100,6 +128,11 @@ docs/            SPEC.md (the benchmark's definition), RESULTS.md (the recorded 
 tools/           validate_stack.py (the stacked engine against the records), timing.py (the paper's Table 6)
 tests/           pytest
 ```
+
+## Contributing
+
+Bug reports, questions and new methods are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md), which also says how the
+benchmark's definition is kept stable.
 
 ## Citation
 

@@ -8,7 +8,11 @@ The benchmark is unchanged: targets, data, protocol, methods and records are tho
 * **LeWi as its own package** (`lewi/`): the layer, the embeddings with their initialization checks and an MLP, for any
   PyTorch model. CSFRBench's `lewi` method is built from it (the same runs bit for bit).
 * **The quick interface**: `csfrbench.task`, `learning_curve` and `compare` benchmark any predictor on the paper's data
-  and metric; the target stays hidden until `Task.reveal()`.
+  and metric; the target stays hidden until `Task.reveal()`. `task` defaults to a development instance (6016);
+  `learning_curve` defaults to the first evaluation instance, whose records `compare` uses.
+* **Versions**: the package is 1.6.0 (`lewi.__version__`, `csfrbench.__version__`); `csfrbench.BENCHMARK_VERSION`
+  names the benchmark definition it implements, 1.5. `CONTRIBUTING.md` says how the definition stays fixed, and
+  `csfrbench/README.md` has a template for reporting a result.
 * **The stacked engine** (`csfrbench.stack`, `csfrbench.kernels`): LeWi and Dense train many networks per kernel with
   LeWi's fused C++ gate kernels, under the per-network protocol; `csfrbench run` and `reproduce` use it by default and
   `--engine exact` keeps the per-network trainer.

@@ -22,7 +22,7 @@ import statistics
 import sys
 from pathlib import Path
 
-from . import __version__
+from . import BENCHMARK_VERSION, __version__
 
 
 def _add_cell(p, arm: bool = False):
@@ -37,7 +37,7 @@ def _add_cell(p, arm: bool = False):
 
 def cmd_info(args) -> int:
     from . import search, suite
-    print(f"CSFRBench {__version__}")
+    print(f"CSFRBench {__version__} (benchmark definition {BENCHMARK_VERSION})")
     for setting, workloads in suite.SETTINGS.items():
         print(f"\n{suite.SETTING_TITLE[setting]}  [--setting {setting}]")
         print(f"  {'workload':20s}{'paper name':24s}{'d':>4s}{'active':>8s}{'backbone':>10s}{'steps':>9s}"
@@ -271,7 +271,7 @@ def _aulc_agreement(winners, units, done, args) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="csfrbench", description=__doc__.split("\n\n")[0])
-    parser.add_argument("--version", action="version", version=f"csfrbench {__version__}")
+    parser.add_argument("--version", action="version", version=f"csfrbench {__version__} (benchmark definition {BENCHMARK_VERSION})")
     sub = parser.add_subparsers(dest="command", required=True)
 
     p = sub.add_parser("info", help="settings, workloads, methods")

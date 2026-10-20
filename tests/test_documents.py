@@ -10,7 +10,7 @@ from csfrbench import cli
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCUMENTS = [ROOT / "README.md", ROOT / "AGENTS.md", ROOT / "csfrbench" / "README.md", ROOT / "lewi" / "README.md",
-             ROOT / "docs" / "REPRODUCE.md"]
+             ROOT / "docs" / "REPRODUCE.md", ROOT / "CONTRIBUTING.md"]
 
 
 def blocks(language: str, document: Path) -> list[str]:
@@ -59,8 +59,25 @@ def test_python_examples_compile(document):
 
 
 @pytest.mark.slow
+def test_readme_examples_run(capsys):
+    """The Python examples of README.md, as a reader copies them (about a minute)."""
+    for example in blocks("python", ROOT / "README.md"):
+        exec(compile(example, "README.md", "exec"), {"__name__": "__main__"})
+    assert "AULC" in capsys.readouterr().out
+
+
+@pytest.mark.slow
 def test_quickstart_runs(capsys):
     """examples/quickstart.py, as a reader runs it (under a minute)."""
     runpy.run_path(str(ROOT / "examples" / "quickstart.py"), run_name="__main__")
     out = capsys.readouterr().out
     assert "test NMSE" in out and "AULC" in out and "LeWi" in out
+
+
+def test_versions_agree():
+    """One version for the distribution and both packages."""
+    import lewi
+    import csfrbench
+    declared = re.search(r'^version = "([^"]+)"', (ROOT / "pyproject.toml").read_text(), flags=re.MULTILINE).group(1)
+    assert declared == csfrbench.__version__ == lewi.__version__
+    assert csfrbench.BENCHMARK_VERSION == "1.5"

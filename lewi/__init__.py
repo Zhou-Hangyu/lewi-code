@@ -19,6 +19,6 @@ from .layers import LeWiLinear
 from .network import (EMBEDDING_DIM, EMBEDDING_STD, MIN_OPEN_INPUT, LeWiMLP, connection_density, derive_seed,
                       init_embeddings, update_masks)
 
-__version__ = "1.0.0"
+__version__ = "1.6.0"
 __all__ = ["LeWiLinear", "LeWiMLP", "init_embeddings", "update_masks", "connection_density", "derive_seed",
            "EMBEDDING_DIM", "EMBEDDING_STD", "MIN_OPEN_INPUT"]

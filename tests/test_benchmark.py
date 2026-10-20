@@ -54,3 +54,7 @@ def test_unknown_names_are_refused():
         csfrbench.task("depth4_tree", instance=1234)
     with pytest.raises(ValueError):
         csfrbench.task("depth4_tree", n=10**9)
+
+
+def test_default_task_is_a_development_instance():
+    assert csfrbench.task("depth4_tree").instance in suite.DEVELOPMENT_INSTANCES

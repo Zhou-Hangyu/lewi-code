@@ -3,10 +3,10 @@
     python examples/quickstart.py            # under a minute on one CPU core
 
 1. A task hands the learner the training and validation examples of one target instance. The target's computation
-   graph stays hidden.
+   graph stays hidden. Develop on a development instance (6016-6019).
 2. Fit any model (here a small PyTorch MLP) and score it on the noise-free test pool: the test NMSE of the paper.
-3. A learning curve repeats this at every training-set size of the workload. Its AULC compares directly with the
-   paper's methods on the same target instance.
+3. A learning curve repeats this at every training-set size of the workload. On an evaluation instance (6000-6015)
+   its AULC compares directly with the paper's methods: run it once, with the final learner, never to tune it.
 4. After training, the hidden graph is available for structural diagnostics.
 
 The learner below trains for 2,000 steps with one fixed configuration. The recorded methods trained for 64,000 steps
@@ -48,15 +48,16 @@ def fit_mlp(X_train, y_train, X_val, y_val, *, steps=2000, width=64, lr=3e-3, se
     return model                                     # a torch module, a callable or an object with .predict
 
 
-# 1. one task: a target instance of the depth-4 tree and 1,024 training examples
-task = csfrbench.task("depth4_tree", instance=6000, n=1024)
+# 1. one task: a development instance of the depth-4 tree and 1,024 training examples
+task = csfrbench.task("depth4_tree", instance=6016, n=1024)
 print(task)
 
 # 2. fit on the examples, score on the noise-free test pool
 model = fit_mlp(task.X_train, task.y_train, task.X_val, task.y_val)
 print(f"test NMSE at n = {task.n}: {task.evaluate(model):.4f}\n")
 
-# 3. a learning curve over the workload's grid, n = 512 ... 32,768, and the comparison with the recorded methods
+# 3. a learning curve over the workload's grid, n = 512 ... 32,768, on an evaluation instance, and the comparison with
+#    the recorded methods there
 curve = csfrbench.learning_curve(fit_mlp, "depth4_tree", instance=6000, name="quick MLP", verbose=False)
 print(curve, "\n")
 csfrbench.compare([curve])

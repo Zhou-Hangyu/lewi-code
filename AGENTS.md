@@ -110,7 +110,8 @@ csfrbench analyze --runs runs/tree --out tables/tree
 | Training-set sizes | 512 to 32,768 in powers of 2; 2,048 to 131,072 on `depth5_tree` |
 | Network and budget | width 32, 4 hidden layers, 64,000 steps; width 64, 8 hidden layers, 128,000 steps on `depth5_tree` |
 | One run on one core | 2 to 4 minutes alone (7 to 17 on `depth5_tree`); 5 to 10 s per network in a LeWi or Dense stack (about 95 s on `depth5_tree`) |
-| Target instances | 16 per workload; 32 for `sampled_dags` |
+| Target instances | 16 per workload; 32 for `sampled_dags`; development instances 6016-6019 |
+| Versions | package 1.6.0; benchmark definition 1.5 (`csfrbench.BENCHMARK_VERSION`) |
 
 ## 7. Documents
 
@@ -122,6 +123,7 @@ csfrbench analyze --runs runs/tree --out tables/tree
 | `docs/SPEC.md` | the complete definition of the benchmark |
 | `docs/RESULTS.md` | the recorded results of every method |
 | `docs/REPRODUCE.md` | every figure and table of the paper: command, records, compute |
+| `CONTRIBUTING.md` | how to report a problem, add a method, and keep the benchmark definition fixed |
 
 ## 8. Problems
 

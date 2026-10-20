@@ -101,6 +101,19 @@ study of Figure 9 and the world-model experiments of Section 6 and Appendix E, F
 [`paper-code`](https://github.com/Zhou-Hangyu/lewi-code/tree/paper-code) branch: the research code and records exactly as
 they produced the paper, with its own reproduction map.
 
+The world models on that branch (its README, section "A world-model experiment"; a second environment with the
+simulators, `requirements-worldmodel.txt`):
+
+| Item | Command on `paper-code` | Compute |
+|---|---|---|
+| Figure 7 (paired comparisons, compact) | `bash scripts/rebuild_figures.sh world_model_grid_compact` | minutes, from the records |
+| Figure 22 (all comparisons) | `bash scripts/rebuild_figures.sh world_model_grid` | minutes, from the records |
+| Figure 23 (learning curves) | `bash scripts/rebuild_figures.sh world_model_transfer_all` | minutes, from the records |
+| Table 7 (search spaces) | `bash scripts/rebuild_figures.sh world_model_hpo_table` | seconds |
+| every world-model number of the paper | `python scripts/verify_results.py` (section H) | minutes |
+| a world-model run | `bash scripts/world_model_smoke.sh`, then `python studies/main-experiments/16-main-final/src/swm16.py one lewi-v1` | 5 to 40 minutes per run |
+| the campaign | about 34,000 search runs and 2,448 final runs | 5 to 40 minutes each |
+
 ## 5. Campaigns from scratch
 
 ```bash

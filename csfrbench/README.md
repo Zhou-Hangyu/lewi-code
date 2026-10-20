@@ -13,6 +13,10 @@ two other uses:
 * **structural evaluation**: linear probes, counterfactual interventions and unit associations measure whether a
   learner's hidden layers and wiring follow the target's computation.
 
+The graph is hidden by protocol, not by access control: `Task.reveal()` works at any time. A learner that reads the
+target's graph, its active inputs or its intermediate values while training breaks the protocol; only the
+graph-informed references read them.
+
 The complete definition is [docs/SPEC.md](../docs/SPEC.md); the recorded results of the paper's methods are
 [docs/RESULTS.md](../docs/RESULTS.md).
 
@@ -21,11 +25,11 @@ The complete definition is [docs/SPEC.md](../docs/SPEC.md); the recorded results
 ```python
 import csfrbench
 
-task = csfrbench.task("depth4_tree", instance=6000, n=1024)   # what a learner may see
+task = csfrbench.task("depth4_tree", instance=6016, n=1024)   # a development instance: what a learner may see
 X, y = task.X_train, task.y_train                             # 1,024 noisy examples (float32 NumPy arrays)
 X_val, y_val = task.X_val, task.y_val                         # 4,096 noisy examples, for model selection
 
-predict = my_fit(X, y, X_val, y_val)                          # your learner
+predict = my_fit(X, y, X_val, y_val)                          # your learner (../README.md defines a small one)
 nmse = task.evaluate(predict)                                 # test NMSE on 65,536 noise-free inputs
 
 target = task.reveal()                                        # after training: the hidden computation
@@ -35,7 +39,8 @@ target.intermediates(X_val)                                   # the value of eve
 
 A predictor is a callable on an `(m, d)` array, an object with `.predict`, or a `torch.nn.Module`.
 `csfrbench.learning_curve(my_fit, "depth4_tree", instance=6000)` fits at every training-set size of the workload and
-`csfrbench.compare([curve])` sets the AULC beside the paper's methods on the same instances.
+`csfrbench.compare([curve])` sets the AULC beside the paper's methods on the same instances. Tune on the development
+instances 6016-6019; run the evaluation instances once, with the final learner.
 [`examples/quickstart.py`](../examples/quickstart.py) runs the whole sequence in under a minute.
 
 ## Catalog
@@ -45,7 +50,7 @@ Two settings share the target instances, the methods and the protocol.
 | Setting | Inputs | Measures |
 |---|---|---|
 | `primary` | every input is active: $d = 8$ ($d = 16$ on the depth-5 tree) | the benefit of compositional structure alone |
-| `nuisance` | the same targets with inert inputs added: $d = 32$ | the same, with the selection of the active inputs |
+| `nuisance` | the same targets with inert inputs added: $d = 32$ (24 inert inputs; 16 on the depth-5 tree) | the same, with the selection of the active inputs |
 
 Each setting has eight workloads (target families):
 
@@ -68,7 +73,8 @@ mean 0 and variance 1. The graph figures of all families are on the
 
 Each workload has 16 target instances (6000-6015; 32 for the sampled DAGs: 6000-6015 and 6020-6035) and seven
 training-set sizes, $n = 2^9, \dots, 2^{15}$ ($2^{11}, \dots, 2^{17}$ on the depth-5 tree). Instances 6016-6019 are for
-method development only; the paper froze its search spaces on them.
+method development only; the paper froze its search spaces on them. The evaluation instances give the numbers to
+report and must not be used to choose a method's settings.
 
 ## Target generation
 
@@ -126,8 +132,26 @@ the data and the metric but not the learner's training budget or search, so thei
 | interface | `csfrbench.task`, `learning_curve`, `compare` | `csfrbench plan / run / analyze`, a `Method` |
 | learner | any predictor | a method on the benchmark's backbone and training protocol |
 | configurations | your choice | 32 per condition from a space frozen on instances 6016-6019 |
-| instances | any | every evaluation instance of the workload |
+| instances | tune on 6016-6019 | every evaluation instance of the workload |
 | compute | minutes | one workload with two methods: 7,168 runs |
+
+## Reporting a result
+
+A result is comparable with the paper's when it follows the official protocol. With every result, give:
+
+| Item | Example |
+|---|---|
+| benchmark version | CSFRBench 1.5 (`csfrbench.BENCHMARK_VERSION`), package 1.6.0 |
+| setting and workload | `primary`, `depth4_tree` |
+| target instances | all 16 evaluation instances (6000-6015); 32 for `sampled_dags` |
+| training-set sizes | the workload's grid, $n = 2^9, \dots, 2^{15}$ |
+| search | the space, frozen on 6016-6019, and 32 configurations per instance and size |
+| training budget and compute | 64,000 steps per run; core-hours in total |
+| result | mean AULC with its 95% Student-t interval over instances |
+| comparison | paired AULC differences per instance against the recorded methods, with their intervals (`csfrbench analyze --runs runs/mine --with-record`) |
+
+A result of the quick interface (`csfrbench.task`, `learning_curve`) is exploratory: say so, and give the learner's
+budget and how its settings were chosen.
 
 ## Methods of the paper
 
@@ -173,5 +197,7 @@ The command line covers the same ground: `csfrbench info`, `verify`, `record`, `
 
 ## Stability
 
-The identifiers of the target families, the names of the random streams and the constants of the normalization fix the
-targets and the training runs; they do not change within version 1. See [CHANGELOG.md](../CHANGELOG.md).
+The benchmark definition has its own version, 1.5 (`csfrbench.BENCHMARK_VERSION`): the paper's targets, data, protocol
+and records. The identifiers of the target families, the names of the random streams and the constants of the
+normalization fix the targets and the training runs. A change to any of them is a new benchmark version; the package
+version (1.6.0) changes with the code. See [CONTRIBUTING.md](../CONTRIBUTING.md) and [CHANGELOG.md](../CHANGELOG.md).
