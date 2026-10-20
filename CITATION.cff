@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use LeWi or CSFRBench, please cite the paper."
+title: "LeWi and CSFRBench"
+type: software
+license: MIT
+repository-code: "https://github.com/Zhou-Hangyu/lewi-code"
+url: "https://zhou-hangyu.github.io/lewi/"
+authors:
+  - family-names: Zhou
+    given-names: Hangyu
+    affiliation: Georgia Institute of Technology
+  - family-names: Dovrolis
+    given-names: Constantine
+    affiliation: University of Cyprus
+  - family-names: Mussmann
+    given-names: Stephen
+    affiliation: Georgia Institute of Technology
+preferred-citation:
+  type: generic
+  title: "Learning Computational Structure for Sample-Efficient Prediction"
+  authors:
+    - family-names: Zhou
+      given-names: Hangyu
+    - family-names: Dovrolis
+      given-names: Constantine
+    - family-names: Mussmann
+      given-names: Stephen
+  year: 2026
+  url: "https://zhou-hangyu.github.io/lewi/"

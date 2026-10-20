@@ -1,0 +1,6 @@
+# The library versions of the paper's records (Python 3.12, Linux x86-64).
+# With these versions a training run equals its record bit for bit.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.11.0
+numpy==2.4.4
+scipy==1.17.1

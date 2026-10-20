@@ -1,0 +1,30 @@
+{
+ "nuisance": {
+  "cells": 95,
+  "conditions": 12096,
+  "diverged_units": 1134,
+  "units": 387072,
+  "winners": 12096
+ },
+ "primary": {
+  "cells": 87,
+  "conditions": 11088,
+  "diverged_units": 312,
+  "units": 354816,
+  "winners": 11088
+ },
+ "recorded_diagnostics": {
+  "das": 8,
+  "probe": 25
+ },
+ "recorded_runs": {
+  "development": 597,
+  "package": 71,
+  "package_stable": 19,
+  "package_stable_and_learning": 6,
+  "package_with_first_steps": 64,
+  "package_with_states": 59
+ },
+ "target_values": 304,
+ "targets": 360
+}

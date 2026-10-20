@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lewi"
+version = "1.0.0"
+description = "LeWi (Learned Wiring) and CSFRBench, a benchmark for compositionally sparse function regression"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Hangyu Zhou" }, { name = "Constantine Dovrolis" }, { name = "Stephen Mussmann" }]
+keywords = ["neural networks", "sparse connectivity", "compositional sparsity", "sample efficiency", "benchmark"]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "ninja",
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "torch>=2.2",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.7"]
+test = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://zhou-hangyu.github.io/lewi/"
+Repository = "https://github.com/Zhou-Hangyu/lewi-code"
+
+[project.scripts]
+csfrbench = "csfrbench.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["lewi*", "csfrbench*"]
+
+[tool.setuptools.package-data]
+csfrbench = ["config/*.json", "reference/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: a check that trains networks for more than one minute",
+]
+addopts = "-m 'not slow'"
