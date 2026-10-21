@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lewi"
-version = "1.6.0"
+version = "1.6.1"
 description = "LeWi (Learned Wiring) and CSFRBench, a benchmark for compositionally sparse function regression"
 readme = "README.md"
 license = "MIT"
@@ -30,6 +30,7 @@ test = ["pytest>=7"]
 
 [project.urls]
 Homepage = "https://zhou-hangyu.github.io/lewi/"
+Paper = "https://arxiv.org/abs/2610.28555"
 Repository = "https://github.com/Zhou-Hangyu/lewi-code"
 
 [project.scripts]

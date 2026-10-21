@@ -7,7 +7,7 @@
 
 See README.md beside this file.
 """
-__version__ = "1.6.0"
+__version__ = "1.6.1"
 #: The benchmark definition this package implements: targets, data, protocol and records of the paper (docs/SPEC.md).
 BENCHMARK_VERSION = "1.5"
 

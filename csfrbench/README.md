@@ -141,7 +141,7 @@ A result is comparable with the paper's when it follows the official protocol. W
 
 | Item | Example |
 |---|---|
-| benchmark version | CSFRBench 1.5 (`csfrbench.BENCHMARK_VERSION`), package 1.6.0 |
+| benchmark version | CSFRBench 1.5 (`csfrbench.BENCHMARK_VERSION`), package 1.6.1 |
 | setting and workload | `primary`, `depth4_tree` |
 | target instances | all 16 evaluation instances (6000-6015); 32 for `sampled_dags` |
 | training-set sizes | the workload's grid, $n = 2^9, \dots, 2^{15}$ |
@@ -200,4 +200,4 @@ The command line covers the same ground: `csfrbench info`, `verify`, `record`, `
 The benchmark definition has its own version, 1.5 (`csfrbench.BENCHMARK_VERSION`): the paper's targets, data, protocol
 and records. The identifiers of the target families, the names of the random streams and the constants of the
 normalization fix the targets and the training runs. A change to any of them is a new benchmark version; the package
-version (1.6.0) changes with the code. See [CONTRIBUTING.md](../CONTRIBUTING.md) and [CHANGELOG.md](../CHANGELOG.md).
+version (1.6.1) changes with the code. See [CONTRIBUTING.md](../CONTRIBUTING.md) and [CHANGELOG.md](../CHANGELOG.md).

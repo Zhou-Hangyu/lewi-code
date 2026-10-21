@@ -1,5 +1,12 @@
 # Change record
 
+## 1.6.1: the paper on arXiv
+
+The code, the benchmark (definition 1.5) and every result are those of 1.6.0.
+
+* The paper is on arXiv: [2610.28555](https://arxiv.org/abs/2610.28555). `README.md`, `CITATION.cff` and the
+  package's project links give it, and the citation is that of the arXiv version.
+
 ## 1.6.0: the public release (LeWi and CSFRBench in one repository)
 
 The benchmark is unchanged: targets, data, protocol, methods and records are those of version 1.5, and every check of

@@ -3,7 +3,7 @@
 Code for **Learning Computational Structure for Sample-Efficient Prediction**
 (Hangyu Zhou, Constantine Dovrolis, Stephen Mussmann).
 [Project page](https://zhou-hangyu.github.io/lewi/) ·
-[Paper](https://zhou-hangyu.github.io/lewi/paper/lewi.pdf) ·
+[Paper](https://arxiv.org/abs/2610.28555) ·
 [CSFRBench page](https://zhou-hangyu.github.io/lewi/csfrbench/)
 
 This repository holds two things:
@@ -138,10 +138,13 @@ benchmark's definition is kept stable.
 
 ```bibtex
 @misc{zhou2026lewi,
-  title  = {Learning Computational Structure for Sample-Efficient Prediction},
+  title = {Learning Computational Structure for Sample-Efficient Prediction},
   author = {Zhou, Hangyu and Dovrolis, Constantine and Mussmann, Stephen},
-  year   = {2026},
-  url    = {https://zhou-hangyu.github.io/lewi/}
+  year = {2026},
+  eprint = {2610.28555},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
+  url = {https://arxiv.org/abs/2610.28555}
 }
 ```
 

@@ -42,5 +42,5 @@ interface, documentation) change only the package version.
 
 The package version follows semantic versioning (`pyproject.toml`, `csfrbench.__version__`, `lewi.__version__`,
 always the same). Every release has a tag `vX.Y.Z` and a CHANGELOG entry that names the benchmark version it
-implements. When the paper's arXiv identifier is announced, the citation in `README.md`, `CITATION.cff` and the project
-page gets it in the same release.
+implements. When the paper's citation changes (for example, on publication at a venue), `README.md`, `CITATION.cff`
+and the project page change in the same release.

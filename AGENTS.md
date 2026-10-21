@@ -111,7 +111,7 @@ csfrbench analyze --runs runs/tree --out tables/tree
 | Network and budget | width 32, 4 hidden layers, 64,000 steps; width 64, 8 hidden layers, 128,000 steps on `depth5_tree` |
 | One run on one core | 2 to 4 minutes alone (7 to 17 on `depth5_tree`); 5 to 10 s per network in a LeWi or Dense stack (about 95 s on `depth5_tree`) |
 | Target instances | 16 per workload; 32 for `sampled_dags`; development instances 6016-6019 |
-| Versions | package 1.6.0; benchmark definition 1.5 (`csfrbench.BENCHMARK_VERSION`) |
+| Versions | package 1.6.1; benchmark definition 1.5 (`csfrbench.BENCHMARK_VERSION`) |
 
 ## 7. Documents
 
