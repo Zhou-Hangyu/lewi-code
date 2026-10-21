@@ -1,6 +1,7 @@
 # Research code: Learning Computational Structure for Sample-Efficient Prediction
 
-Hangyu Zhou, Constantine Dovrolis, Stephen Mussmann. Paper and project page: <https://zhou-hangyu.github.io/lewi/>.
+Hangyu Zhou, Constantine Dovrolis, Stephen Mussmann. Paper: <https://arxiv.org/abs/2610.28555>. Project page:
+<https://zhou-hangyu.github.io/lewi/>.
 
 This branch holds the research code, final configurations and compact result records as they produced the paper:
 the minimum set needed to understand LeWi (learned wiring), regenerate the CSFRBench targets, run the reported methods
@@ -18,7 +19,8 @@ expected output.
 
 ## Differences from the arXiv version
 
-This package was assembled for the submitted draft of the paper. Three items of the arXiv version differ from it:
+This package was assembled for the submitted draft of the paper. Three items of the arXiv version
+([2610.28555v1](https://arxiv.org/abs/2610.28555v1)) differ from it:
 
 * Table 6 and Appendix D.7 (computational cost). The arXiv version times optimized implementations of both methods:
   networks trained in stacks, LeWi with fused C++ gate kernels, Dense compiled, both run for the whole budget side by
